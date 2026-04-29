@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create a premium 6-second silent looping vertical website hero video concept. A realistic modern smartphone is floating or gently held against a soft elegant medspa background, centered in frame, with the phone screen large and visually clear. The visual style is luxurious, modern, feminine but professional, with warm neutral ivory and blush tones, soft shadows, clean uncluttered background, and subtle polished movement.\n\nShow a 3-step visual-only app flow on the phone screen with absolutely no readable text, no letters, no numbers, no fake words, and no captions anywhere. Step 1: a facial selfie scan interface, showing a woman's face centered on the phone screen with a soft oval guide and subtle scanning line. Step 2: an AI facial assessment screen, showing the same face with clean highlighted treatment areas on the forehead, under-eyes, cheeks, jawline, and skin texture. Use elegant colored overlays, dots, and minimal icon-like cards with no text. Step 3: a saved treatment interest screen represented visually by a few clean rounded cards, checkmarks, heart icons, and selected states only, with no text.\n\nThe phone should remain the clear focal point. The UI should look premium, clean, and product-like, but entirely text-free. No sci-fi interface, no cartoon look, no extra floating graphics outside the phone, no voiceover, no audio. Seamless loop."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/text-free-floating-phone-v4/"
+  }
+}

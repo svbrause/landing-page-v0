@@ -1,0 +1,14 @@
+{
+  "name": "projects/plasma-matter-469702-s1/locations/us-central1/publishers/google/models/veo-3.1-fast-generate-001/operations/035626a4-2fbc-4688-a7c6-80cfa35b1c6f",
+  "done": true,
+  "response": {
+    "@type": "type.googleapis.com/cloud.ai.large_models.vision.GenerateVideoResponse",
+    "raiMediaFilteredCount": 0,
+    "videos": [
+      {
+        "gcsUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/vertical-detailed-v2/2891761742238464404/sample_0.mp4",
+        "mimeType": "video/mp4"
+      }
+    ]
+  }
+}

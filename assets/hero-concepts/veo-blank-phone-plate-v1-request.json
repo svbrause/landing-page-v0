@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create a 6-second silent looping vertical premium website hero video plate. A modern smartphone is held very steadily in one hand or gently floating, centered in frame, front-facing with only a very slight natural movement. The phone screen must be completely blank, flat, pure white or very light warm ivory, with no text, no icons, no images, no app interface, no reflections across the screen, and no fingers covering the screen. The phone should stay in one simple stable position so a real app interface can be composited onto the blank screen later. Background: luxurious modern medspa aesthetic, warm neutral ivory and blush tones, soft natural lighting, clean uncluttered background, subtle depth of field. The phone is the clear focal point. No captions, no floating graphics, no sci-fi look, no UI text anywhere."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/blank-phone-plate-v1/"
+  }
+}

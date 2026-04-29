@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create an 8-second silent vertical concept video for a medspa AI product hero visual. Style: photorealistic product concept, like a clean smartphone screen recording composited inside a real modern phone held naturally in one hand. The phone screen must be large, crisp, centered, and immediately legible on mobile. No narration, no audio, no corporate explainer graphics, no tiny text, no clutter. Scene beat 1, seconds 0-2: a patient opens a mobile web experience called Ponce AI and uses a selfie camera capture interface. The screen shows an adult woman's face framed by a soft scanning oval and subtle face landmark dots. Scene beat 2, seconds 2-5: the AI assessment appears on the same phone. Facial areas are highlighted with tasteful colored overlays around under eyes, cheeks, jawline, and forehead. Clear recommendation cards slide in with short readable labels such as Under-eye refresh, Skin tone, Cheek contour, Jawline balance. Scene beat 3, seconds 5-8: the patient scrolls treatment recommendation cards and taps save icons, adding interests to a simple list called My treatment interests. End on a clean screen showing 3 saved interests. The motion should feel like a real product flow prototype, steady and practical, not futuristic sci-fi. Keep the UI premium, medical-aesthetic, trustworthy, warm, and simple. The phone should remain fixed enough that viewers understand the product concept without reading surrounding webpage text."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 8,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/"
+  }
+}

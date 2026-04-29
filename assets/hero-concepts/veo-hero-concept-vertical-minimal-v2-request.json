@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "A realistic 6-second silent looping vertical product demo video for a premium medspa AI app. Show a close-up smartphone in hand with a crisp, legible screen.\n\nScene 1: patient selfie scan interface.\nScene 2: AI facial assessment with highlighted facial areas and treatment recommendation cards.\nScene 3: patient saving treatments to an interest list.\n\nLuxury medspa aesthetic, warm neutrals, blush, ivory, clean modern UI, realistic product marketing style, soft natural lighting, minimal background, crisp readable phone screen, seamless loop. No illustration, no sci-fi look, no extra text outside the phone."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/vertical-minimal-v2/"
+  }
+}

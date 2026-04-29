@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create a premium website hero video concept: a realistic smartphone floating or gently held against a soft elegant background, centered in frame, with the phone screen large and easy to read. Show a 3-step app flow on the screen: facial selfie scan, AI assessment with highlighted treatment areas, and saved treatment interest list. The phone should remain the clear focal point. The visual style should be luxurious, modern, feminine but professional, with warm neutral medspa colors and a clean uncluttered background. Silent, polished, subtle movement, 6-second seamless loop."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/floating-phone-v3/"
+  }
+}

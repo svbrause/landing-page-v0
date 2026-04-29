@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create an 8-second silent horizontal 16:9 concept video for a medspa AI product hero visual. This is a product-flow animatic, not a finished ad. Make it photorealistic and practical: a real adult patient at home holding a smartphone in front of her face, with the phone screen large enough to understand. The viewer should understand the product from the visual alone. No narration, no sound, no futuristic sci-fi, no medical procedure footage, no tiny unreadable UI, no exaggerated beauty filter.\n\nScene beat 1, seconds 0-2: show the patient physically lining up the phone to take a selfie. The camera view is over-the-shoulder or three-quarter angle so we see both her face and the phone screen. The phone displays a clean selfie capture interface branded Ponce AI, with a soft oval face guide, alignment dots, and a simple instruction like Align your face. She adjusts the phone slightly until her face fits the guide, then taps the capture button.\n\nScene beat 2, seconds 2-3: show a brief analysis loading state on the same phone: the captured face photo freezes, a tasteful scanning line passes over it, subtle facial landmark dots appear, and a clear short label says Analyzing facial areas. Keep this very brief and credible.\n\nScene beat 3, seconds 3-6: the AI assessment appears. Show the patient's face on the phone with specific facial areas highlighted by clean colored overlays around under-eyes, cheeks, jawline, forehead, and skin tone. Next to or beneath the face, show short recommendation cards with readable labels: Under-eye refresh, Skin tone, Cheek contour, Jawline balance. The UI should look like a real mobile web product for medspas: premium, warm, clinical, simple.\n\nScene beat 4, seconds 6-8: the patient browses the recommendation cards and taps save or heart icons on two or three treatments. The screen transitions to a simple list titled My treatment interests with saved items visible. End on the saved interest list, held steady for readability.\n\nUse natural hand movement, but keep the phone and UI stable enough to read. Lighting should be soft and realistic, like a patient at home before an appointment. The phone screen is the hero: it must remain clear, central, and legible. The video should feel like inspiration for a later real screen recording, not a glossy abstract commercial."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "16:9",
+    "durationSeconds": 8,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/horizontal/"
+  }
+}

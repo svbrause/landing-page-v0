@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ponce AI Hero Interface Prototype</title>
+    <style>
+      :root {
+        --ink: #2f2521;
+        --muted: #8d7068;
+        --blush: #d58f81;
+        --soft: #f8eee9;
+        --line: #ead8d0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #e8d1c4;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .phone-screen {
+        position: relative;
+        width: 390px;
+        height: 844px;
+        overflow: hidden;
+        background: #fffdfa;
+        color: var(--ink);
+      }
+
+      .status {
+        height: 44px;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        padding: 0 22px 8px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .topbar {
+        height: 58px;
+        display: grid;
+        grid-template-columns: 48px 1fr 48px;
+        align-items: center;
+        border-bottom: 1px solid rgba(234, 216, 208, 0.8);
+        background: rgba(255, 253, 250, 0.92);
+      }
+
+      .back {
+        padding-left: 22px;
+        font-size: 26px;
+        line-height: 1;
+      }
+
+      .brand {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .stage {
+        position: absolute;
+        inset: 102px 0 0;
+        opacity: 0;
+        transform: translateX(18px);
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+
+      .scan {
+        animation-name: scanStage;
+      }
+
+      .results {
+        animation-name: resultsStage;
+      }
+
+      .saved {
+        animation-name: savedStage;
+        background: #fffdfa;
+      }
+
+      @keyframes scanStage {
+        0%, 31% { opacity: 1; transform: translateX(0); }
+        36%, 100% { opacity: 0; transform: translateX(-18px); }
+      }
+
+      @keyframes resultsStage {
+        0%, 31% { opacity: 0; transform: translateX(18px); }
+        36%, 64% { opacity: 1; transform: translateX(0); }
+        69%, 100% { opacity: 0; transform: translateX(-18px); }
+      }
+
+      @keyframes savedStage {
+        0%, 64% { opacity: 0; transform: translateX(18px); }
+        69%, 100% { opacity: 1; transform: translateX(0); }
+      }
+
+      .face-card {
+        margin: 24px auto 0;
+        width: 278px;
+        height: 360px;
+        border-radius: 32px;
+        background:
+          radial-gradient(circle at 50% 31%, #f4c5ad 0 19%, transparent 20%),
+          radial-gradient(ellipse at 50% 50%, #c98265 0 24%, transparent 25%),
+          radial-gradient(ellipse at 50% 75%, #b97761 0 20%, transparent 21%),
+          linear-gradient(#f6dfd2, #efd4c6);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 22px 42px rgba(71, 45, 35, 0.15);
+      }
+
+      .face-card::before,
+      .face-card::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: #3b241e;
+        top: 144px;
+      }
+
+      .face-card::before { left: 108px; }
+      .face-card::after { right: 108px; }
+
+      .guide {
+        position: absolute;
+        inset: 28px 38px 46px;
+        border: 3px solid rgba(213, 143, 129, 0.8);
+        border-radius: 48% 48% 44% 44%;
+      }
+
+      .scan-line {
+        position: absolute;
+        left: 38px;
+        right: 38px;
+        top: 58px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 18px rgba(213, 143, 129, 0.7);
+        animation: scanLine 1.4s linear infinite;
+      }
+
+      @keyframes scanLine {
+        from { transform: translateY(0); }
+        to { transform: translateY(238px); }
+      }
+
+      .stage-title {
+        margin: 18px 34px 4px;
+        font-size: 28px;
+        font-weight: 850;
+      }
+
+      .stage-copy {
+        margin: 0 34px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .primary {
+        margin: 26px auto 0;
+        width: 210px;
+        height: 52px;
+        border-radius: 26px;
+        display: grid;
+        place-items: center;
+        background: var(--ink);
+        color: #fffdfa;
+        font-weight: 800;
+      }
+
+      .zone {
+        position: absolute;
+        border: 2px solid rgba(213, 143, 129, 0.9);
+        background: rgba(213, 143, 129, 0.22);
+        border-radius: 18px;
+      }
+
+      .zone.forehead { left: 72px; top: 68px; width: 134px; height: 34px; }
+      .zone.eyes { left: 56px; top: 146px; width: 166px; height: 34px; }
+      .zone.cheeks { left: 42px; top: 205px; width: 194px; height: 58px; }
+      .zone.jaw { left: 68px; top: 284px; width: 142px; height: 45px; }
+
+      .cards {
+        display: grid;
+        gap: 12px;
+        margin: 18px 26px 0;
+      }
+
+      .card {
+        min-height: 60px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fff;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        padding: 12px 16px;
+        box-shadow: 0 8px 20px rgba(74, 42, 35, 0.06);
+      }
+
+      .card strong {
+        display: block;
+        font-size: 18px;
+      }
+
+      .card span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .save {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--blush);
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+
+      .saved .stage-title {
+        margin-top: 42px;
+      }
+
+      .check {
+        background: var(--blush);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone-screen">
+      <div class="status"><span>9:41</span><span>●●●</span></div>
+      <div class="topbar"><div class="back">‹</div><div class="brand">Ponce AI</div><div></div></div>
+
+      <section class="stage scan">
+        <h1 class="stage-title">Center your face</h1>
+        <p class="stage-copy">Scanning facial areas…</p>
+        <div class="face-card"><div class="guide"></div><div class="scan-line"></div></div>
+        <div class="primary">Scan Face</div>
+      </section>
+
+      <section class="stage results">
+        <h1 class="stage-title">Your assessment</h1>
+        <p class="stage-copy">Treatments matched to your face</p>
+        <div class="face-card" style="height: 330px; margin-top: 14px">
+          <div class="zone forehead"></div>
+          <div class="zone eyes"></div>
+          <div class="zone cheeks"></div>
+          <div class="zone jaw"></div>
+        </div>
+        <div class="cards">
+          <div class="card"><div><strong>Botox</strong><span>Forehead lines</span></div><div class="save">+</div></div>
+          <div class="card"><div><strong>Filler</strong><span>Cheek contour</span></div><div class="save">+</div></div>
+        </div>
+      </section>
+
+      <section class="stage saved">
+        <h1 class="stage-title">Your interests</h1>
+        <p class="stage-copy">Saved to discuss later</p>
+        <div class="cards" style="margin-top: 32px">
+          <div class="card"><div><strong>Botox</strong><span>Forehead lines</span></div><div class="save check">✓</div></div>
+          <div class="card"><div><strong>Filler</strong><span>Cheek contour</span></div><div class="save check">✓</div></div>
+          <div class="card"><div><strong>Microneedling</strong><span>Skin texture</span></div><div class="save check">✓</div></div>
+        </div>
+        <div class="primary" style="margin-top: 56px; width: 260px">Discuss at consult</div>
+      </section>
+    </main>
+  </body>
+</html>
