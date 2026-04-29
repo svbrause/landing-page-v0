@@ -855,50 +855,16 @@
       /* ─── FOUNDERS ────────────────────────────────────── */
       .founders { background: var(--ivory); }
       .origin-grid { display: grid; grid-template-columns: 0.86fr 1.14fr; gap: 52px; align-items: start; }
-      .origin-visual {
-        margin-top: 24px;
-        min-height: 310px;
-        border-radius: var(--r);
-        overflow: hidden;
-        background: linear-gradient(148deg, #1a1412 0%, #2d1f18 100%);
-        box-shadow: var(--shadow);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-      }
-      .origin-visual::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(circle, rgba(255,250,245,0.04) 1px, transparent 1px);
-        background-size: 20px 20px;
-      }
-      .origin-mark {
-        position: relative;
-        z-index: 1;
-        font-family: var(--font-display);
-        font-size: 7rem;
-        font-weight: 500;
-        font-style: italic;
-        color: rgba(255,250,245,0.12);
-        line-height: 1;
-        user-select: none;
-      }
       .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
       .bio { padding: 0; border: 1px solid var(--line); border-radius: var(--r); background: rgba(255,255,255,0.66); overflow: hidden; transition: transform 260ms cubic-bezier(.22,.68,0,1.2), box-shadow 260ms ease, border-color 260ms ease; }
       .bio:hover { transform: translateY(-4px); border-color: rgba(156,103,88,0.28); box-shadow: var(--shadow); }
-      .avatar-placeholder {
+      .bio-avatar {
         width: 100%;
         height: 240px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(145deg, #2a1c18, #3a2824);
-        font-family: var(--font-display);
-        font-size: 4rem;
-        color: rgba(255,250,245,0.22);
-        font-weight: 500;
-        font-style: italic;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+        background: #2a1c18;
       }
       .bio-body { padding: 20px; }
 
@@ -1535,21 +1501,18 @@
             <p class="eyebrow">Founding team</p>
             <h2>A clinic problem, built by a surgeon and operator.</h2>
             <p class="lead">Ponce AI began inside Dr. Tanya Judge's San Francisco plastic surgery practice, then became a product for medspas that want every consultation to have a second act.</p>
-            <div class="origin-visual reveal" aria-hidden="true">
-              <div class="origin-mark">P</div>
-            </div>
           </div>
           <div>
             <div class="bio-grid">
               <article class="bio reveal">
-                <div class="avatar-placeholder" aria-hidden="true">TJ</div>
+                <img class="bio-avatar" src="assets/founders/dr-tanya-judge.avif" alt="Dr. Tanya Judge, MD" loading="lazy" />
                 <div class="bio-body">
                   <strong>Dr. Tanya Judge, MD</strong>
                   <p class="subtle">Chief Medical Officer. Board-certified plastic surgeon. Built the clinical foundation of Ponce AI from years of treating real patients in San Francisco.</p>
                 </div>
               </article>
               <article class="bio reveal reveal-delay-1">
-                <div class="avatar-placeholder" aria-hidden="true">SA</div>
+                <img class="bio-avatar" src="assets/founders/sugam-slack-portrait.png" alt="Sugam Arora" loading="lazy" />
                 <div class="bio-body">
                   <strong>Sugam Arora</strong>
                   <p class="subtle">CEO and Co-Founder. Previously at Lyft, Google, Sun Microsystems. UCLA Anderson MBA. Built the technology to solve the problem he saw firsthand in Dr. Judge's practice.</p>
@@ -1714,7 +1677,7 @@
 
       /* ── Scroll reveals ────────────────────────────────── */
       const revealTargets = document.querySelectorAll(
-        ".step, .metric, .contrast, .bio, .quote, .logo-item, .offer-visual, .use-flow-item, .origin-visual, .adoption-panel, .proof-story p"
+        ".step, .metric, .contrast, .bio, .quote, .logo-item, .offer-visual, .use-flow-item, .adoption-panel, .proof-story p"
       );
       if ("IntersectionObserver" in window) {
         revealTargets.forEach(t => t.classList.add("reveal"));
