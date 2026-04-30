@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create a 6-second silent looping vertical premium website hero video. A single iPhone is centered in frame against a clean, soft neutral background, light gray or off-white. The phone is stationary, upright, and fills most of the frame. No hands are visible.\n\nOn the iPhone screen is a realistic adult woman's face, front-facing, centered, and relatively still with a neutral expression. The image is sharp, natural, well-lit, and high realism, with natural skin texture.\n\nAfter a brief pause, a fine facial landmark wireframe appears on the face on the phone screen. The overlay is made of tiny soft white landmark points connected by very thin semi-transparent white lines with a soft pearl glow. The wireframe follows the natural structure of the face: jawline, chin, cheek surface, nose bridge, nostrils, nose tip, eyelids, eyebrows, lips, mouth contour, and lower face. It should look like a technical facial tracking overlay used for face analysis, fitted precisely to the skin, refined and minimal.\n\nA gentle horizontal light sweep passes across the face from top to bottom. As it moves, the tiny landmark points and fine wireframe lines become slightly more visible and softly illuminated, locking onto the facial features. The wireframe pulses very slightly once fully formed, then settles. A few minimal focus zones around the under-eyes, cheeks, and jawline softly illuminate for a moment, then settle.\n\nStyle direction: extremely minimalist, Apple-style, luxury skincare brand aesthetic, not futuristic. Soft diffused lighting. Neutral tones. Subtle glow only. Soft white with faint pearl and blush-lavender tint. Shallow depth of field. Seamless loop with a clean hold at the end.\n\nImportant negative instructions: no text, no captions, no labels, no letters, no numbers, no fake UI words, no logos, no brand marks, no readable interface, no UI clutter, no gibberish. No filled triangles. No repeating triangle texture. No decorative triangle pattern. No rhinestone pattern. No makeup contour lines. No dark contour lines. No thick lines. No neon. No harsh blue or green. No sci-fi hologram panels. No dashboards. No fast motion. No dramatic transitions. No split screens. No cartoon style. No CGI/plastic skin. No distorted face. No distorted phone. No audio."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/fine-landmark-wireframe-v4/"
+  }
+}

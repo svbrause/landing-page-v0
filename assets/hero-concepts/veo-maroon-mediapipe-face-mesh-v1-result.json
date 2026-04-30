@@ -1,0 +1,14 @@
+{
+  "name": "projects/plasma-matter-469702-s1/locations/us-central1/publishers/google/models/veo-3.1-fast-generate-001/operations/7dbc583b-287e-4a6a-8ee4-323e4e582400",
+  "done": true,
+  "response": {
+    "@type": "type.googleapis.com/cloud.ai.large_models.vision.GenerateVideoResponse",
+    "raiMediaFilteredCount": 0,
+    "videos": [
+      {
+        "gcsUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/maroon-mediapipe-face-mesh-v1/15605967297127204769/sample_0.mp4",
+        "mimeType": "video/mp4"
+      }
+    ]
+  }
+}

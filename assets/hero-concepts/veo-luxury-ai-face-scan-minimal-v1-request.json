@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create a 6-second silent looping vertical premium website hero video. A modern iPhone is held very steadily in one hand in a luxurious medspa setting. On the phone screen is one realistic adult woman's face, centered and calm, being gently analyzed by a refined AI aesthetic assessment. The motion should be extremely minimal: only a slow natural camera drift, one very subtle scan line, and two or three soft markers that pulse once around the cheeks, forehead, and lower face. Use the website palette: warm espresso, ivory cream, soft blush, and a tiny amount of clinical blue for the analysis markers. The style should be realistic, elegant, expensive, clean, calm, and understated. The phone remains the clear focal point, with soft natural lighting and shallow depth of field.\n\nAbsolutely no text anywhere. No captions. No labels. No letters. No numbers. No fake UI words. No logos. No brand marks. No readable interface. No busy dashboards. No sci-fi holograms. No extra floating panels outside the phone. No dramatic movement. No fast transitions. No split screens. No cartoon or illustration style. No distorted hands. No extra fingers. No audio. Seamless loop with a clean hold at the end."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/luxury-ai-face-scan-minimal-v1/"
+  }
+}

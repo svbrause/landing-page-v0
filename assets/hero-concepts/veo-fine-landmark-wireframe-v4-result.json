@@ -1,0 +1,11 @@
+{
+  "name": "projects/plasma-matter-469702-s1/locations/us-central1/publishers/google/models/veo-3.1-fast-generate-001/operations/4beb06c7-e2be-49e6-b064-b629cc7538ea",
+  "done": true,
+  "response": {
+    "@type": "type.googleapis.com/cloud.ai.large_models.vision.GenerateVideoResponse",
+    "raiMediaFilteredCount": 1,
+    "raiMediaFilteredReasons": [
+      "1 videos were filtered out because they violated Vertex AI's usage guidelines. You will not be charged for blocked videos. Try rephrasing the prompt. If you think this was an error, send feedback. Support codes: 15236754"
+    ]
+  }
+}

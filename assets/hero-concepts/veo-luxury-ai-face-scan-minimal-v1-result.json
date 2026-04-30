@@ -1,0 +1,14 @@
+{
+  "name": "projects/plasma-matter-469702-s1/locations/us-central1/publishers/google/models/veo-3.1-fast-generate-001/operations/ff2cd74e-4860-4412-ad0e-f4bb825a733d",
+  "done": true,
+  "response": {
+    "@type": "type.googleapis.com/cloud.ai.large_models.vision.GenerateVideoResponse",
+    "raiMediaFilteredCount": 0,
+    "videos": [
+      {
+        "gcsUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/luxury-ai-face-scan-minimal-v1/600951316550984458/sample_0.mp4",
+        "mimeType": "video/mp4"
+      }
+    ]
+  }
+}

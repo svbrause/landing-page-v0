@@ -1,0 +1,14 @@
+{
+  "name": "projects/plasma-matter-469702-s1/locations/us-central1/publishers/google/models/veo-3.1-fast-generate-001/operations/2dde30c4-36a0-4966-ae1a-c1e4884dd145",
+  "done": true,
+  "response": {
+    "@type": "type.googleapis.com/cloud.ai.large_models.vision.GenerateVideoResponse",
+    "raiMediaFilteredCount": 0,
+    "videos": [
+      {
+        "gcsUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/soft-luminous-face-mesh-scan-v3/11417063915333302872/sample_0.mp4",
+        "mimeType": "video/mp4"
+      }
+    ]
+  }
+}

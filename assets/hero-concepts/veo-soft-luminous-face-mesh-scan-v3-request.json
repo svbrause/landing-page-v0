@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "Create a 6-second silent looping vertical premium website hero video inspired by a luxury facial analysis scan. A realistic adult woman's face is shown close-up in a clean, bright, high-end aesthetic clinic setting, with a modern smartphone softly visible behind or beside her showing a blurred camera view of the same face. The main face should be the focal point, calm and elegant, with natural skin and soft lighting.\n\nOver the lower half of the face, show a subtle luminous triangulated face mesh: a transparent net of many small triangular polygons fitted to the cheeks, nose, lips, chin, and jaw. The mesh should be very thin, soft white with pale blush and faint lavender highlights, glowing gently at low opacity. It should look like a premium clinical scan, not heavy makeup lines. A bright diagonal scan beam sweeps slowly across the face from upper left to lower right, briefly illuminating the mesh as it passes. The effect should be elegant, minimal, refined, and expensive, with a clean medspa aesthetic.\n\nVisual style: warm ivory, cream, blush, soft rose, espresso accents, clean luxury clinic lighting, shallow depth of field, realistic camera, polished product ad quality. Motion should be minimal: tiny natural head/phone movement, one slow diagonal scan beam, gentle mesh shimmer. Seamless loop with a clean hold at the end.\n\nImportant negative instructions: no text anywhere, no captions, no labels, no letters, no numbers, no fake UI words, no logos, no brand marks, no readable interface. Do not draw dark contour lines. Do not draw a sparse face outline. Do not make a makeup contour map. Do not use harsh blue or neon green. Do not make the mesh thick, black, or cartoonish. No sci-fi hologram panels. No dashboards. No fast motion. No dramatic transitions. No split screens. No distorted hands. No extra fingers. No audio."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/soft-luminous-face-mesh-scan-v3/"
+  }
+}

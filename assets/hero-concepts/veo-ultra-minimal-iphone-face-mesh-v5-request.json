@@ -1,0 +1,16 @@
+{
+  "instances": [
+    {
+      "prompt": "A single iPhone centered in frame against a clean, soft neutral background, light gray or off-white. The phone is stationary, upright, and fills most of the frame.\n\nOn the iPhone screen is a woman’s face, front-facing, centered, and relatively still with a neutral expression. The image is sharp, natural, and well-lit.\n\nAfter a brief pause, a thin, semi-transparent geometric facial mesh begins to appear on her face on the screen. The mesh is subtle and precise, made of fine white lines with a soft glow. It should look like a clean beauty-tech visual effect, not a decorative pattern.\n\nA gentle horizontal light sweep passes across her face from top to bottom. As it moves, the mesh becomes more visible and softly illuminated, aligning with the eyes, nose, lips, cheeks, and jawline.\n\nThe mesh pulses very slightly once fully formed, with a refined, elegant glow: soft white with a faint pearl and lavender tint.\n\nA few minimal highlight zones around the eyes, cheeks, and jawline softly illuminate for a moment, then settle.\n\nNo text appears at any point. No extra UI elements. Only the face and the animated mesh.\n\nEnd with the mesh fully visible and stable, aligned to her face.\n\nStyle direction: extremely minimalist, Apple-style, luxury skincare brand aesthetic, not futuristic. No hands, no distractions, no environment detail. High realism, natural-looking face, soft diffused lighting, neutral tones, shallow depth of field, subtle glow only, avoid neon or sci-fi look. 6 seconds, silent, seamless loop.\n\nImportant constraint: no text, no UI clutter, no gibberish, only clean visual elements."
+    }
+  ],
+  "parameters": {
+    "aspectRatio": "9:16",
+    "durationSeconds": 6,
+    "generateAudio": false,
+    "resolution": "720p",
+    "sampleCount": 1,
+    "personGeneration": "allow_adult",
+    "storageUri": "gs://test-deploy-august25/ponce-ai/hero-concepts/ultra-minimal-iphone-face-mesh-v5/"
+  }
+}

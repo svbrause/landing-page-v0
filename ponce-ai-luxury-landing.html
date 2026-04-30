@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ponce AI | Medspa consultation and treatment planning</title>
-    <meta name="description" content="Ponce AI structures the in-office consultation — patient photos, skin assessment, treatment interests — and delivers an interactive post-visit plan patients use to book more treatments from home." />
+    <title>Ponce AI | Modernize aesthetic consultations with AI</title>
+    <meta name="description" content="Ponce AI modernizes aesthetic consultations with AI-powered assessment, shared treatment plans, and patient education that helps more patients book from home." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -207,16 +207,19 @@
         position: relative;
         z-index: 1;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.68fr);
-        gap: clamp(28px, 5vw, 64px);
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: clamp(28px, 5vw, 44px);
+        align-items: start;
         width: 100%;
         min-height: calc(96vh - 84px);
       }
       .hero-copy {
-        max-width: 760px;
-        padding: clamp(100px, 16vh, 200px) 0 42px;
+        max-width: 940px;
+        margin: 0 auto;
+        padding: clamp(92px, 13vh, 148px) 0 0;
+        text-align: center;
       }
+      .hero-copy h1, .hero-copy .lead { margin-left: auto; margin-right: auto; }
       .hero .eyebrow { color: rgba(255,250,245,0.6); }
       .hero h1 { color: #fffaf5; text-shadow: 0 2px 48px rgba(0,0,0,0.16); }
       .hero .lead { color: rgba(255,250,245,0.74); }
@@ -242,26 +245,37 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         gap: 14px;
         margin-top: 30px;
       }
       .trust-strip {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 10px 16px;
-        max-width: 720px;
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: 24px;
         color: rgba(255,250,245,0.48);
         font-size: 0.88rem;
       }
       .trust-strip span:not(:last-child)::after { content: "·"; margin-left: 16px; }
+      .hero-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -10px;
+      }
 
       /* ─── HERO PHONE MOCKUP ───────────────────────────── */
       .hero-visual {
         position: relative;
         display: grid;
         place-items: center;
-        padding: 40px 0 20px;
+        width: 100%;
+        padding: 0 0 28px;
       }
       .phone-shell {
         position: relative;
@@ -378,6 +392,834 @@
       .hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
       .hero-badge.consult { top: 18%; left: -20px; }
       .hero-badge.plan { right: -18px; bottom: 22%; }
+
+      /* ─── HERO CINEMATIC (single animated story) ────────── */
+      .hero-cinematic {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .hc-frame {
+        position: relative;
+        width: 100%;
+        min-height: clamp(360px, 52vw, 420px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 250, 245, 0.14);
+        background: rgba(12, 9, 8, 0.45);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+        backdrop-filter: blur(20px);
+      }
+      .hc-video {
+        width: 100%;
+        height: 100%;
+        min-height: clamp(360px, 52vw, 420px);
+        display: block;
+        object-fit: cover;
+        object-position: center;
+      }
+      .hc-scene {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 28px 22px;
+        transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 0.68, 0, 1);
+        pointer-events: none;
+      }
+      .hc-scene--detect { z-index: 1; }
+      .hc-scene--plan { z-index: 2; opacity: 0; transform: scale(0.94) translateY(12px); }
+      .hc-scene--mobile { z-index: 3; opacity: 0; transform: translateX(36px) scale(0.96); }
+      .hero-cinematic[data-step="0"] .hc-scene--detect,
+      .hero-cinematic[data-step="1"] .hc-scene--detect,
+      .hero-cinematic[data-step="2"] .hc-scene--detect { opacity: 1; transform: none; }
+      .hero-cinematic[data-step="3"] .hc-scene--detect,
+      .hero-cinematic[data-step="4"] .hc-scene--detect { opacity: 0; transform: scale(0.92) translateY(-16px); }
+      .hero-cinematic[data-step="3"] .hc-scene--plan { opacity: 1; transform: none; }
+      .hero-cinematic[data-step="4"] .hc-scene--plan { opacity: 0; transform: translateX(-28px) scale(0.96); }
+      .hero-cinematic[data-step="4"] .hc-scene--mobile { opacity: 1; transform: none; }
+      .hero-cinematic[data-step="static"] .hc-scene--detect,
+      .hero-cinematic[data-step="static"] .hc-scene--plan { opacity: 0; transform: none; pointer-events: none; }
+      .hero-cinematic[data-step="static"] .hc-scene--mobile { opacity: 1; transform: none; }
+      .hc-photo-wrap {
+        position: relative;
+        width: min(100%, 300px);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      }
+      .hc-photo {
+        display: block;
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: center 40%;
+      }
+      .hc-face-mesh {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        color: #9c6758;
+        mix-blend-mode: multiply;
+        opacity: 0;
+        transition: opacity 0.55s ease;
+      }
+      .hc-face-mesh svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .hc-face-mesh path,
+      .hc-face-mesh ellipse,
+      .hc-face-mesh line,
+      .hc-face-mesh polyline {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.62;
+        vector-effect: non-scaling-stroke;
+      }
+      .hc-face-mesh .mesh-soft { opacity: 0.24; stroke-width: 1; }
+      .hc-face-mesh .mesh-focus { opacity: 0.86; stroke-width: 2; }
+      .hc-scan-line {
+        position: absolute;
+        z-index: 3;
+        left: 13%;
+        right: 13%;
+        top: 12%;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, transparent, rgba(156, 103, 88, 0.92), transparent);
+        box-shadow: 0 0 18px rgba(156, 103, 88, 0.38);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .hc-scan-line::after {
+        content: '';
+        position: absolute;
+        left: 12%;
+        right: 12%;
+        top: -38px;
+        height: 78px;
+        background: linear-gradient(180deg, transparent, rgba(156, 103, 88, 0.12), transparent);
+      }
+      .hero-cinematic[data-step="1"] .hc-scan-line,
+      .hero-cinematic[data-step="2"] .hc-scan-line {
+        opacity: 1;
+        animation: hcScanDown 2.6s ease-in-out infinite;
+      }
+      .hero-cinematic[data-step="1"] .hc-face-mesh,
+      .hero-cinematic[data-step="2"] .hc-face-mesh {
+        opacity: 1;
+        animation: hcMeshGlow 2.6s ease-in-out infinite;
+      }
+      .hc-marker {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--rose);
+        border: 2px solid #fffaf5;
+        box-shadow: 0 0 0 4px rgba(200, 132, 116, 0.28);
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.22, 0.68, 0, 1.2);
+      }
+      .hero-cinematic[data-step="1"] .hc-marker,
+      .hero-cinematic[data-step="2"] .hc-marker {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      .hero-cinematic[data-step="1"] .hc-marker,
+      .hero-cinematic[data-step="2"] .hc-marker {
+        animation: hcMarkerPulse 1.8s ease-in-out infinite;
+      }
+      .hero-cinematic[data-step="2"] .hc-marker--a { animation-delay: 0s; }
+      .hero-cinematic[data-step="2"] .hc-marker--b { animation-delay: 0.15s; }
+      .hero-cinematic[data-step="2"] .hc-marker--c { animation-delay: 0.3s; }
+      .hc-marker--a { top: 34%; left: 50%; }
+      .hc-marker--b { top: 52%; left: 34%; }
+      .hc-marker--c { top: 50%; left: 68%; }
+      .hc-chip {
+        position: absolute;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%) translateY(12px);
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 250, 245, 0.22);
+        background: rgba(26, 20, 18, 0.88);
+        color: #fffaf5;
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.68, 0, 1.2);
+        white-space: nowrap;
+      }
+      .hc-chip::before {
+        content: '';
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background: var(--rose);
+        vertical-align: middle;
+      }
+      .hero-cinematic[data-step="2"] .hc-chip { opacity: 1; transform: translateX(-50%) translateY(0); }
+      .hc-scene--detect { align-content: center; }
+      .hc-detect-inner { position: relative; width: 100%; max-width: 300px; margin: 0 auto; }
+      .hc-plan-card {
+        width: min(100%, 280px);
+        padding: 20px 22px;
+        border-radius: 18px;
+        background: #fffaf5;
+        color: var(--ink);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+        border: 1px solid rgba(89, 58, 48, 0.12);
+      }
+      .hc-plan-label {
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(58, 42, 36, 0.45);
+        margin-bottom: 12px;
+      }
+      .hc-plan-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding-top: 4px;
+      }
+      .hc-plan-row strong { font-size: 1.05rem; font-weight: 800; }
+      .hc-plan-cta {
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #1a1412;
+        color: #fffaf5;
+        font-size: 0.72rem;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .hc-phone-outline {
+        width: 200px;
+        padding: 14px 12px 20px;
+        border-radius: 32px;
+        background: #141009;
+        box-shadow: 0 0 0 1px rgba(255, 250, 245, 0.1), 0 40px 90px rgba(0, 0, 0, 0.45);
+        position: relative;
+      }
+      .hc-phone-notch {
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 72px;
+        height: 22px;
+        background: #141009;
+        border-radius: 0 0 14px 14px;
+        z-index: 2;
+      }
+      .hc-phone-body {
+        margin-top: 18px;
+        padding: 14px 12px 12px;
+        border-radius: 22px;
+        background: #fafaf8;
+        color: var(--ink);
+      }
+      .hc-phone-thumb {
+        height: 72px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(145deg, #e6cbc0, #a96f61);
+        color: #fffaf5;
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+      .hc-phone-title {
+        margin: 12px 0 0;
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+      .hc-phone-sub {
+        margin: 4px 0 0;
+        font-size: 0.68rem;
+        color: rgba(36, 28, 24, 0.52);
+      }
+      .hc-phone-book {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px 12px;
+        border: 0;
+        border-radius: 10px;
+        background: #1a1412;
+        color: #fffaf5;
+        font: inherit;
+        font-size: 0.72rem;
+        font-weight: 900;
+        cursor: default;
+      }
+      .hc-phone-book span { color: var(--rose); font-weight: 900; }
+      .hc-live {
+        margin: 16px 0 0;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: rgba(255, 250, 245, 0.5);
+        min-height: 1.4em;
+        letter-spacing: 0.01em;
+      }
+      .hero-cinematic[data-step="static"] .hc-live { color: rgba(255, 250, 245, 0.55); }
+      @keyframes hcMarkerPulse {
+        0%, 100% { box-shadow: 0 0 0 4px rgba(200, 132, 116, 0.28); transform: translate(-50%, -50%) scale(1); }
+        50% { box-shadow: 0 0 0 10px rgba(200, 132, 116, 0.12); transform: translate(-50%, -50%) scale(1.08); }
+      }
+      @keyframes hcScanDown {
+        0% { top: 12%; opacity: 0; }
+        10% { opacity: 1; }
+        86% { opacity: 1; }
+        100% { top: 84%; opacity: 0; }
+      }
+      @keyframes hcMeshGlow {
+        0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 0 rgba(156, 103, 88, 0)); }
+        50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(156, 103, 88, 0.18)); }
+      }
+
+      /* ─── HERO STORYBOARD (legacy panels — unused) ─────── */
+      .hero-storyboard {
+        width: 100%;
+        min-height: 0;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .consult-panel {
+        position: relative;
+        min-height: 330px;
+        padding: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(255,250,245,0.14);
+        border-radius: 20px;
+        background: rgba(255,250,245,0.08);
+        box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+        backdrop-filter: blur(20px);
+      }
+      .consult-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, rgba(255,250,245,0.12), transparent 50%);
+        pointer-events: none;
+      }
+      .consult-panel.plan { background: rgba(255,250,245,0.95); color: var(--ink); }
+      .consult-panel.patient { background: linear-gradient(145deg, rgba(42,31,27,0.96), rgba(105,68,58,0.66)); }
+      .consult-topline {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        color: rgba(255,250,245,0.64);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .consult-panel.plan .consult-topline { color: rgba(58,42,36,0.48); }
+      .consult-topline span:first-child { color: var(--rose); }
+      .consult-panel-title {
+        position: relative;
+        z-index: 2;
+        display: block;
+        margin-top: 14px;
+        color: #fffaf5;
+        font-size: 1rem;
+        line-height: 1.12;
+      }
+      .consult-panel.plan .consult-panel-title { color: var(--ink); }
+      .scan-photo {
+        position: relative;
+        z-index: 1;
+        height: 220px;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #241c18;
+        box-shadow: 0 18px 54px rgba(0,0,0,0.26);
+      }
+      .scan-photo img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center 44%;
+      }
+      .scan-photo::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 54%, rgba(20,14,12,0.42));
+        pointer-events: none;
+      }
+      .scan-marker {
+        position: absolute;
+        z-index: 2;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #3b82f6;
+        border: 2px solid #eef2ff;
+        box-shadow: 0 0 0 8px rgba(59,130,246,0.18);
+        transform: translate(-50%, -50%);
+      }
+      .scan-line {
+        position: absolute;
+        z-index: 2;
+        left: 18px;
+        right: 18px;
+        top: 44%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(157,214,203,0.86), transparent);
+        box-shadow: 0 0 20px rgba(157,214,203,0.42);
+      }
+      .scan-result {
+        position: relative;
+        z-index: 2;
+        width: calc(100% - 28px);
+        margin: -26px auto 0;
+        padding: 11px 12px;
+        border: 1px solid rgba(255,250,245,0.16);
+        border-radius: 14px;
+        background: rgba(26,20,18,0.9);
+        color: #fffaf5;
+        box-shadow: 0 16px 38px rgba(0,0,0,0.26);
+        backdrop-filter: blur(16px);
+      }
+      .scan-result small { display: block; color: rgba(255,250,245,0.52); font-size: 0.64rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+      .scan-result strong { display: block; margin-top: 3px; font-size: 0.82rem; line-height: 1.12; }
+      .provider-workspace {
+        position: relative;
+        z-index: 1;
+        min-height: 230px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fffaf5;
+        box-shadow: 0 18px 46px rgba(58,42,36,0.12);
+      }
+      .provider-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .provider-avatar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(36,28,24,0.58);
+        font-size: 0.66rem;
+        font-weight: 800;
+      }
+      .provider-avatar i {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--blush);
+        color: var(--clay);
+        font-style: normal;
+      }
+      .ai-chip {
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: #1e40af;
+        color: #eef2ff;
+        font-size: 0.6rem;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .provider-plan-list { display: grid; gap: 8px; }
+      .provider-plan-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(250,244,239,0.74);
+      }
+      .provider-plan-row strong { display: block; font-size: 0.8rem; }
+      .provider-plan-row small { color: rgba(36,28,24,0.5); font-size: 0.66rem; }
+      .provider-plan-row span { padding: 4px 8px; border-radius: 999px; background: var(--blush); color: var(--clay); font-size: 0.62rem; font-weight: 900; }
+      .provider-plan-row:first-child span { background: #1a1412; color: #fffaf5; }
+      .provider-share {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 12px;
+        background: #1a1412;
+        color: #fffaf5;
+        font-size: 0.72rem;
+        font-weight: 900;
+      }
+      .provider-share span { color: var(--rose); }
+      .patient-phone-art {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 174px);
+        min-height: 232px;
+        margin: 0 auto;
+        padding: 19px 12px 12px;
+        border-radius: 30px;
+        background: #fffaf5;
+        color: var(--ink);
+        box-shadow: 0 20px 56px rgba(0,0,0,0.28);
+      }
+      .patient-phone-art::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 46px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(36,28,24,0.16);
+        transform: translateX(-50%);
+      }
+      .patient-video-thumb {
+        height: 76px;
+        display: grid;
+        place-items: center;
+        margin-top: 7px;
+        border-radius: 16px;
+        background: linear-gradient(145deg, #e6cbc0, #a96f61);
+        color: #fffaf5;
+        font-weight: 900;
+      }
+      .patient-rec { margin-top: 10px; }
+      .patient-rec strong { display: block; font-size: 0.8rem; line-height: 1.1; }
+      .patient-rec small { display: block; margin-top: 4px; color: rgba(36,28,24,0.54); font-size: 0.64rem; }
+      .patient-before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+      .patient-before-after span { height: 30px; border-radius: 10px; background: linear-gradient(145deg, #ead2c8, #c89586); }
+      .patient-book {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding: 9px 10px;
+        border-radius: 10px;
+        background: #1a1412;
+        color: #fffaf5;
+        font-size: 0.7rem;
+        font-weight: 900;
+      }
+      .story-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 312px;
+        border: 1px solid rgba(255,250,245,0.14);
+        border-radius: 18px;
+        background: rgba(255,250,245,0.08);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+      }
+      .story-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(145deg, rgba(255,250,245,0.12), transparent 46%);
+        pointer-events: none;
+      }
+      .story-card.detect, .story-card.plan, .story-card.educate { padding: 22px; }
+      .story-card.plan { background: rgba(255,250,245,0.94); color: var(--ink); }
+      .story-label {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        color: rgba(255,250,245,0.64);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .story-card.plan .story-label { color: rgba(58,42,36,0.48); }
+      .story-label span { color: var(--rose); }
+      .phase-title { position: relative; z-index: 1; display: block; margin-top: 14px; color: #fffaf5; font-size: 1rem; line-height: 1.2; }
+      .story-card.plan .phase-title { color: var(--ink); }
+      .phase-copy { position: relative; z-index: 1; margin: 6px 0 0; color: rgba(255,250,245,0.62); font-size: 0.88rem; }
+      .story-card.plan .phase-copy { color: rgba(36,28,24,0.58); }
+      .detect-visual {
+        position: relative;
+        z-index: 1;
+        margin: 0 auto 14px;
+        max-width: 206px;
+      }
+      .story-face {
+        position: relative;
+        z-index: 1;
+        width: 118px;
+        height: 148px;
+        margin: 6px auto 14px;
+      }
+      .story-face-oval {
+        width: 100%;
+        height: 100%;
+        border-radius: 50% 50% 46% 46%;
+        background: linear-gradient(170deg, #f0d4c8 0%, #d49a8b 55%, #ae6f62 100%);
+        border: 1px solid rgba(255,250,245,0.26);
+        box-shadow: inset 16px 0 34px rgba(255,250,245,0.12), inset -18px -12px 30px rgba(58,42,36,0.18);
+      }
+      .story-face-oval::before {
+        content: '';
+        position: absolute;
+        top: 38%;
+        left: 24%;
+        width: 13px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(45,28,24,0.62);
+        box-shadow: 46px 0 0 rgba(45,28,24,0.62);
+      }
+      .annotated-face-card {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 172px;
+        border-radius: 20px;
+        object-fit: cover;
+        object-position: center 45%;
+        border: 1px solid rgba(255,250,245,0.22);
+        box-shadow: 0 18px 54px rgba(0,0,0,0.28);
+      }
+      .opportunity-pill {
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        z-index: 2;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 178px;
+        padding: 10px 12px;
+        border: 1px solid rgba(255,250,245,0.2);
+        border-radius: 999px;
+        background: rgba(26,20,18,0.84);
+        color: #fffaf5;
+        box-shadow: 0 16px 42px rgba(0,0,0,0.28);
+        backdrop-filter: blur(14px);
+        font-size: 0.76rem;
+        font-weight: 850;
+      }
+      .opportunity-pill::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
+      .story-scan-line {
+        position: absolute;
+        left: -18px;
+        right: -18px;
+        top: 30%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(255,250,245,0.86), transparent);
+        box-shadow: 0 0 22px rgba(255,250,245,0.44);
+        animation: scanMove 3.2s ease-in-out infinite;
+      }
+      .story-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--rose);
+        border: 2px solid #fffaf5;
+        box-shadow: 0 0 0 5px rgba(200,132,116,0.22);
+        transform: translate(-50%, -50%);
+      }
+      .story-suggestion-stack { position: relative; z-index: 1; display: grid; gap: 8px; }
+      .story-suggestion {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 9px 10px;
+        border-radius: 12px;
+        background: rgba(255,250,245,0.12);
+        color: rgba(255,250,245,0.84);
+        font-size: 0.76rem;
+        font-weight: 850;
+      }
+      .story-suggestion span { padding: 3px 7px; border-radius: 999px; background: var(--rose); color: #fffaf5; font-size: 0.64rem; white-space: nowrap; }
+      .story-plan-head { position: relative; z-index: 1; margin-bottom: 18px; }
+      .story-plan-head strong { display: block; font-family: var(--font-display); font-size: 2.25rem; line-height: 0.95; font-weight: 500; }
+      .story-plan-head p { margin: 8px 0 0; color: rgba(36,28,24,0.58); font-size: 0.88rem; }
+      .story-plan-list { position: relative; z-index: 1; display: grid; gap: 10px; }
+      .story-plan-item { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,250,245,0.84); }
+      .story-plan-item i { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--blush); color: var(--clay); font-style: normal; font-weight: 900; font-size: 0.72rem; }
+      .story-plan-item strong { display: block; font-size: 0.86rem; }
+      .story-plan-item small { color: rgba(36,28,24,0.54); }
+      .story-plan-item span { padding: 4px 8px; border-radius: 999px; background: #1a1412; color: #fffaf5; font-size: 0.66rem; font-weight: 900; }
+      .story-plan-item:nth-child(2) span, .story-plan-item:nth-child(3) span { background: var(--blush); color: var(--clay); }
+      .plan-share-footer {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: #1a1412;
+        color: #fffaf5;
+        font-size: 0.76rem;
+        font-weight: 900;
+      }
+      .plan-share-footer span { color: var(--rose); white-space: nowrap; }
+      .story-education-card { position: relative; z-index: 1; padding: 14px; border-radius: 14px; background: #fffaf5; color: var(--ink); }
+      .story-education-card strong { display: block; margin-bottom: 6px; }
+      .story-education-card p { margin: 0; color: rgba(36,28,24,0.56); font-size: 0.78rem; }
+      .story-education-row { display: flex; gap: 8px; margin-top: 12px; }
+      .story-education-pill { flex: 1; padding: 8px; border-radius: 9px; background: var(--cream); color: var(--clay); font-size: 0.72rem; font-weight: 800; text-align: center; }
+      .story-book { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: #1a1412; color: #fffaf5; font-size: 0.8rem; font-weight: 900; display: flex; justify-content: space-between; }
+      .education-phone {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 180px);
+        margin: 0 auto 14px;
+        padding: 18px 12px 12px;
+        border-radius: 28px;
+        background: #fffaf5;
+        color: var(--ink);
+        box-shadow: 0 18px 54px rgba(0,0,0,0.24);
+      }
+      .education-phone::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 44px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(36,28,24,0.16);
+        transform: translateX(-50%);
+      }
+      .education-video {
+        height: 74px;
+        display: grid;
+        place-items: center;
+        margin-top: 6px;
+        border-radius: 16px;
+        background: linear-gradient(145deg, #ead2c8, #b87868);
+        color: #fffaf5;
+        font-size: 1.1rem;
+        font-weight: 900;
+      }
+      .education-phone strong { display: block; margin-top: 10px; font-size: 0.82rem; }
+      .education-phone small { display: block; margin-top: 3px; color: rgba(36,28,24,0.54); font-size: 0.66rem; }
+      .education-proof-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+      .education-proof-row span { height: 28px; border-radius: 9px; background: var(--cream); }
+      .education-book { display: flex; justify-content: space-between; margin-top: 10px; padding: 9px 10px; border-radius: 10px; background: #1a1412; color: #fffaf5; font-size: 0.72rem; font-weight: 900; }
+      .story-arrow {
+        position: absolute;
+        z-index: 3;
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #fffaf5;
+        color: var(--espresso);
+        box-shadow: 0 14px 44px rgba(0,0,0,0.24);
+        font-weight: 900;
+      }
+      .story-arrow.one { left: calc(50% - 34px); top: 36%; }
+      .story-arrow.two { left: calc(50% - 34px); bottom: 25%; }
+      .phase-plan-mini {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 10px;
+        margin: 28px 0 20px;
+      }
+      .phase-plan-mini span {
+        height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255,250,245,0.76);
+      }
+      .phase-plan-mini span:nth-child(1) { width: 100%; }
+      .phase-plan-mini span:nth-child(2) { width: 78%; }
+      .phase-plan-mini span:nth-child(3) { width: 58%; }
+      .phase-phone-mini {
+        position: relative;
+        z-index: 1;
+        width: 124px;
+        height: 174px;
+        margin: 2px auto 16px;
+        padding: 16px 12px;
+        border-radius: 26px;
+        background: #fffaf5;
+        box-shadow: inset 0 0 0 1px rgba(89,58,48,0.12);
+      }
+      .phase-phone-mini::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 42px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(36,28,24,0.18);
+        transform: translateX(-50%);
+      }
+      .phase-phone-mini span {
+        display: block;
+        height: 28px;
+        margin-top: 12px;
+        border-radius: 9px;
+        background: var(--cream);
+      }
+      .phase-phone-mini span:last-child { height: 42px; background: #1a1412; }
+
+      .why-plan {
+        background: #241c18;
+        color: #fffaf5;
+        padding: clamp(54px, 7vw, 90px) 24px;
+      }
+      .why-plan-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 42px; align-items: center; }
+      .why-plan h2 { max-width: 680px; }
+      .why-plan .lead { color: rgba(255,250,245,0.74); }
+      .confidence-stack { display: grid; gap: 12px; }
+      .confidence-card {
+        padding: 20px;
+        border: 1px solid rgba(255,250,245,0.14);
+        border-radius: var(--r);
+        background: rgba(255,250,245,0.08);
+        backdrop-filter: blur(16px);
+      }
+      .confidence-card strong { display: block; margin-bottom: 6px; color: #fffaf5; }
+      .confidence-card p { margin: 0; color: rgba(255,250,245,0.66); }
 
       /* ─── HERO SLIDE: MINI COMPONENTS ────────────────── */
       .hs-patient {
@@ -688,6 +1530,118 @@
       .step-copy strong { display: block; margin-bottom: 7px; font-size: 1.06rem; }
       .step-copy p { margin: 0; color: rgba(36,28,24,0.66); }
       .closing-line { max-width: 760px; margin: 34px auto 0; text-align: center; color: rgba(36,28,24,0.72); font-size: 1.16rem; }
+      .story-sections { display: grid; gap: 18px; margin-top: 38px; }
+      .story-section {
+        display: grid;
+        grid-template-columns: 0.72fr 1.28fr;
+        gap: 28px;
+        align-items: center;
+        padding: clamp(24px, 4vw, 42px);
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        background: rgba(255,255,255,0.68);
+      }
+      .story-section:nth-child(even) { background: var(--cream); }
+      .story-section h3 { margin: 0 0 10px; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; line-height: 1; }
+      .story-section p { margin: 0; color: rgba(36,28,24,0.66); font-size: 1.05rem; }
+      .story-kicker { display: inline-flex; margin-bottom: 14px; color: var(--clay); font-size: 0.76rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+      .simple-visual {
+        min-height: 210px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--r);
+        background: linear-gradient(145deg, rgba(255,250,245,0.92), rgba(243,221,212,0.62));
+        overflow: hidden;
+        position: relative;
+      }
+      .simple-visual.dark { background: linear-gradient(145deg, #1a1412, #3a2a24); }
+      .simple-face { position: relative; width: 118px; height: 148px; border-radius: 50% 50% 46% 46%; background: linear-gradient(170deg, #f0d4c8, #c7897b); }
+      .simple-face::before { content: ''; position: absolute; top: 38%; left: 24%; width: 12px; height: 8px; border-radius: 50%; background: rgba(45,28,24,0.62); box-shadow: 46px 0 0 rgba(45,28,24,0.62); }
+      .simple-dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--rose); border: 2px solid #fffaf5; box-shadow: 0 0 0 5px rgba(200,132,116,0.22); transform: translate(-50%, -50%); }
+      .simple-real-face {
+        display: block;
+        width: min(82%, 270px);
+        max-height: 214px;
+        object-fit: cover;
+        object-position: center 42%;
+        border-radius: 20px;
+        box-shadow: 0 18px 46px rgba(58,42,36,0.16);
+      }
+      .simple-scan-video {
+        display: block;
+        width: min(82%, 270px);
+        max-height: 214px;
+        aspect-ratio: 9 / 16;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 20px;
+        box-shadow: 0 18px 46px rgba(58,42,36,0.16);
+      }
+      .simple-lines { width: min(78%, 260px); display: grid; gap: 12px; }
+      .simple-lines span { height: 42px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,250,245,0.8); }
+      .simple-lines span:nth-child(2) { width: 78%; }
+      .simple-lines span:nth-child(3) { width: 58%; }
+      .simple-phone { width: 128px; height: 178px; padding: 18px 12px; border-radius: 28px; background: #fffaf5; box-shadow: 0 18px 48px rgba(58,42,36,0.14); }
+      .simple-phone span { display: block; height: 28px; margin-top: 12px; border-radius: 9px; background: var(--cream); }
+      .simple-phone span:last-child { height: 42px; background: #1a1412; }
+      .mini-plan-card {
+        width: min(82%, 280px);
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fffaf5;
+        box-shadow: 0 18px 46px rgba(58,42,36,0.14);
+      }
+      .mini-plan-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        color: rgba(36,28,24,0.56);
+        font-size: 0.72rem;
+        font-weight: 850;
+      }
+      .mini-ai-chip { padding: 5px 8px; border-radius: 999px; background: #1e40af; color: #eef2ff; font-size: 0.62rem; }
+      .mini-plan-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        align-items: center;
+        padding: 10px 0;
+        border-top: 1px solid var(--line);
+      }
+      .mini-plan-row strong { display: block; font-size: 0.82rem; }
+      .mini-plan-row small { color: rgba(36,28,24,0.5); }
+      .mini-plan-row span { padding: 4px 8px; border-radius: 999px; background: var(--blush); color: var(--clay); font-size: 0.62rem; font-weight: 900; }
+      .mini-plan-row:first-of-type span { background: #1a1412; color: #fffaf5; }
+      .mini-share-bar { display: flex; justify-content: space-between; margin-top: 10px; padding: 10px 11px; border-radius: 11px; background: #1a1412; color: #fffaf5; font-size: 0.72rem; font-weight: 900; }
+      .mini-share-bar span { color: var(--rose); }
+      .mini-patient-phone {
+        width: 148px;
+        padding: 20px 12px 12px;
+        border-radius: 30px;
+        background: #fffaf5;
+        color: var(--ink);
+        box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+        position: relative;
+      }
+      .mini-patient-phone::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 42px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(36,28,24,0.16);
+        transform: translateX(-50%);
+      }
+      .mini-video { height: 58px; display: grid; place-items: center; border-radius: 14px; background: linear-gradient(145deg, #e6cbc0, #a96f61); color: #fffaf5; font-weight: 900; }
+      .mini-phone-title { display: block; margin-top: 10px; font-size: 0.76rem; line-height: 1.12; }
+      .mini-phone-copy { display: block; margin-top: 4px; color: rgba(36,28,24,0.5); font-size: 0.62rem; }
+      .mini-phone-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+      .mini-phone-actions span { height: 28px; border-radius: 9px; background: var(--cream); }
+      .mini-book-bar { display: flex; justify-content: space-between; margin-top: 9px; padding: 8px 9px; border-radius: 10px; background: #1a1412; color: #fffaf5; font-size: 0.68rem; font-weight: 900; }
 
       /* ─── CALLOUT ─────────────────────────────────────── */
       .callout { background: #f4e6df; }
@@ -706,18 +1660,17 @@
         gap: 34px;
         align-items: center;
       }
-      /* Adoption stats panel (replaces provider-consult.jpeg) */
+      /* Adoption stats panel — three columns, number + label locked */
       .adoption-panel {
-        min-height: 520px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 0;
+        align-items: stretch;
         border-radius: var(--r);
         background: linear-gradient(148deg, #1a1412 0%, #2d1f18 100%);
         box-shadow: var(--shadow-lg);
-        padding: 52px 36px;
+        padding: clamp(28px, 4vw, 40px) clamp(20px, 3vw, 28px);
         position: relative;
         overflow: hidden;
       }
@@ -728,18 +1681,37 @@
         background-image: radial-gradient(circle, rgba(255,250,245,0.04) 1px, transparent 1px);
         background-size: 22px 22px;
       }
-      .adoption-stat { text-align: center; position: relative; z-index: 1; padding: 28px 0; }
+      .adoption-stat {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 20px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .adoption-stat + .adoption-stat { border-left: 1px solid rgba(255, 250, 245, 0.12); }
       .adoption-num {
         display: block;
         font-family: var(--font-display);
-        font-size: 5.5rem;
+        font-size: clamp(2.8rem, 5vw, 4rem);
         font-weight: 500;
         color: #fffaf5;
-        line-height: 0.88;
+        line-height: 1;
         font-style: italic;
       }
-      .adoption-label { display: block; font-size: 0.84rem; color: rgba(255,250,245,0.54); margin-top: 8px; letter-spacing: 0.02em; }
-      .adoption-divider { width: 48px; height: 1px; background: rgba(255,250,245,0.14); position: relative; z-index: 1; }
+      .adoption-label {
+        display: block;
+        max-width: 11em;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        line-height: 1.35;
+        color: rgba(255, 250, 245, 0.58);
+        letter-spacing: 0.02em;
+      }
+      .adoption-divider { display: none; }
       .use-flow-list { display: grid; gap: 12px; }
       .use-flow-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 18px; border: 1px solid var(--line); border-radius: var(--r); background: rgba(255,250,245,0.72); }
       .use-flow-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--blush); color: var(--espresso); font-weight: 900; }
@@ -773,15 +1745,46 @@
         font-weight: 500;
       }
       .metric p { color: rgba(36,28,24,0.67); }
-      .metric-visual { min-height: 76px; display: flex; align-items: center; justify-content: center; margin-top: 22px; }
-      .revenue-stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; width: 100%; }
-      .revenue-stack span { min-height: 46px; display: grid; place-items: center; border-radius: 8px; background: var(--cream); color: var(--clay); font-weight: 900; }
-      .treatment-dots { display: grid; grid-template-columns: repeat(6, 28px); gap: 8px; }
-      .treatment-dots span, .save-ring { border-radius: 50%; background: linear-gradient(145deg, var(--rose), var(--blush)); }
-      .treatment-dots span { width: 28px; height: 28px; }
-      .save-ring { width: 76px; height: 76px; display: grid; place-items: center; background: conic-gradient(var(--rose) 0 61%, var(--cream) 61% 100%); }
-      .save-ring::after { content: ''; width: 48px; height: 48px; border-radius: 50%; background: #fff; }
-      .stars { color: var(--rose); font-size: 1.6rem; letter-spacing: 0; }
+      .metric-visual { min-height: 56px; display: flex; align-items: center; justify-content: flex-start; margin-top: 18px; }
+      .revenue-bar {
+        width: 100%;
+        height: 6px;
+        border-radius: 999px;
+        background: rgba(243, 221, 212, 0.55);
+        overflow: hidden;
+      }
+      .revenue-bar::after {
+        content: '';
+        display: block;
+        width: 72%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--clay), var(--rose));
+      }
+      .treatment-dots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+      }
+      .treatment-dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, var(--rose), var(--blush));
+        opacity: 0.85;
+      }
+      .save-ring {
+        width: 56px;
+        height: 56px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: conic-gradient(var(--rose) 0 61%, var(--cream) 61% 100%);
+      }
+      .save-ring::after { content: ''; width: 34px; height: 34px; border-radius: 50%; background: #fff; }
+      .stars { color: var(--rose); font-size: 1.35rem; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; }
       .proof-story { display: flex; flex-direction: column; gap: 28px; }
       .quote {
         margin: 0;
@@ -804,7 +1807,7 @@
         border-radius: var(--r);
         overflow: hidden;
         position: relative;
-        background: linear-gradient(148deg, #2d1f18, #3a2a24);
+        background: #2d1f18;
         display: flex;
         align-items: flex-end;
         padding: 22px;
@@ -814,13 +1817,14 @@
         content: '';
         position: absolute;
         inset: 0;
-        background-image: radial-gradient(circle, rgba(255,250,245,0.04) 1px, transparent 1px);
-        background-size: 22px 22px;
+        background: linear-gradient(180deg, rgba(31,23,20,0.06) 10%, rgba(31,23,20,0.68) 68%, rgba(31,23,20,0.88) 100%);
         pointer-events: none;
+        z-index: 1;
       }
-      .offer-visual-inner { width: 100%; position: relative; z-index: 1; }
+      .offer-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+      .offer-visual-inner { width: 100%; position: relative; z-index: 2; }
       .pilot-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-      .pilot-tile { min-height: 148px; padding: 20px; border: 1px solid rgba(255,250,245,0.18); border-radius: var(--r); background: rgba(255,250,245,0.07); }
+      .pilot-tile { min-height: 136px; padding: 20px; border: 1px solid rgba(255,250,245,0.22); border-radius: var(--r); background: rgba(31,23,20,0.58); backdrop-filter: blur(16px); }
       .pilot-tile strong { display: block; margin-bottom: 10px; font-family: var(--font-display); font-size: 2.8rem; line-height: 0.9; font-style: italic; }
       .offer strong { color: #fffaf5; }
       .offer .button { background: #fffaf5; color: var(--espresso); box-shadow: 0 18px 44px rgba(0,0,0,0.28); }
@@ -984,6 +1988,10 @@
         0%, 100% { transform: translateY(0) rotate(-1deg); }
         50% { transform: translateY(-10px) rotate(0.5deg); }
       }
+      @keyframes scanMove {
+        0%, 100% { top: 23%; opacity: 0.42; }
+        50% { top: 68%; opacity: 1; }
+      }
 
       /* ─── REDUCED MOTION ──────────────────────────────── */
       @media (prefers-reduced-motion: reduce) {
@@ -997,9 +2005,15 @@
         .hero { align-items: start; min-height: auto; padding-top: 92px; }
         .hero-grid, .origin-grid, .use-flow, .offer-card, .final-card { grid-template-columns: 1fr; }
         .hero-copy { padding: 54px 0 34px; }
-        .hero-visual { order: -1; padding-bottom: 0; }
+        .hero-visual { padding-bottom: 0; }
         .hero-badge { display: none; }
+        .hero-cinematic .hc-frame { min-height: 340px; }
+        .story-card.plan { grid-row: auto; }
+        .story-arrow { display: none; }
+        .story-section { grid-template-columns: 1fr; }
+        .why-plan-grid { grid-template-columns: 1fr; }
         .steps, .faq, .contrast-list, .pilot-board, .proof-layout, .logo-cloud { grid-template-columns: 1fr; }
+        .offer-visual { min-height: 560px; }
         .proof-band .inner { grid-template-columns: 1fr; }
         .bio-grid { grid-template-columns: 1fr; }
         .result-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1011,13 +2025,26 @@
         .section { padding: 68px 18px; }
         .hero { padding-left: 18px; padding-right: 18px; }
         h1 { font-size: clamp(2.8rem, 13vw, 4.5rem); }
-        .hero .lead { max-width: 320px; font-size: 1rem; }
-        .hero-actions { align-items: flex-start; }
+        .hero-copy { text-align: left; }
+        .hero-copy h1, .hero-copy .lead { margin-left: 0; margin-right: 0; }
+        .hero .lead { max-width: 360px; font-size: 1rem; }
+        .story-card.detect, .story-card.plan, .story-card.educate { padding: 16px; }
+        .story-face { width: 112px; height: 140px; }
+        .story-plan-head strong { font-size: 1.8rem; }
+        .story-section { padding: 20px; }
+        .hero-actions { align-items: flex-start; justify-content: flex-start; }
+        .hero-footer { align-items: flex-start; margin-top: 0; }
         .trust-strip { display: none; }
         .result-grid { grid-template-columns: 1fr; }
+        .adoption-panel { grid-template-columns: 1fr; }
+        .adoption-stat + .adoption-stat { border-left: 0; border-top: 1px solid rgba(255, 250, 245, 0.12); }
+        .adoption-stat { padding: 18px 16px; }
         .logo-cloud { grid-template-columns: 1fr 1fr; }
         .sticky-mobile { display: flex; min-height: 50px; font-size: 0.9rem; white-space: nowrap; }
         .top-cta { display: none; }
+        body.has-scrolled .brand-mark { opacity: 0; pointer-events: none; transform: translateY(-16px); }
+        .offer-visual { min-height: 480px; padding: 16px; }
+        .pilot-tile { min-height: 94px; }
         .pilot-form { grid-template-columns: 1fr; }
         footer { padding-bottom: 92px; }
       }
@@ -1036,175 +2063,66 @@
       <section class="hero" id="top">
         <div class="inner hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Medspa consultation &amp; treatment planning</p>
-            <h1>She walked in curious. She leaves with a plan.</h1>
-            <p class="lead">Ponce AI structures the in-office consultation — patient photos, skin assessment, treatment interests — then delivers an interactive post-visit plan patients use to book more treatments from home.</p>
+            <p class="eyebrow">AI aesthetic consults for medspas</p>
+            <h1>Modernize your consultations with AI.</h1>
+            <p class="lead">Turn every consult into a mobile AI plan patients understand, revisit, and buy from.</p>
+          </div>
+
+          <div class="hero-visual" aria-label="Animated product story">
+            <div class="hero-cinematic" id="hero-cinematic">
+              <div class="hc-frame">
+                <video
+                  class="hc-video"
+                  src="assets/hero-concepts/ponce-ai-ultra-minimal-iphone-face-mesh-v5-pingpong.mp4"
+                  poster="assets/hero-concepts/ponce-ai-ultra-minimal-iphone-face-mesh-v5-poster.jpg"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label="Animated iPhone facial mesh scan"
+                ></video>
+              </div>
+              <p class="hc-live">AI facial mesh scan on mobile.</p>
+            </div>
+          </div>
+
+          <div class="hero-footer">
             <div class="hero-actions">
               <button class="button" type="button" data-open-demo>See a 2-Minute Demo</button>
               <a class="hero-link" href="#pilot-section-form">Start a free pilot</a>
             </div>
             <div class="trust-strip">
-              <span>Built with board-certified plastic surgeons</span>
-              <span>Trained on 10,000+ real cases</span>
-              <span>Used by medspas across California, Texas, and Florida</span>
+              <span>Surgeon-built</span>
+              <span>10,000+ cases</span>
+              <span>Live medspa pilots</span>
             </div>
-          </div>
-
-          <div class="hero-visual" aria-label="Ponce AI consultation and post-visit plan product experience">
-            <div class="hero-badge consult">In-office consultation</div>
-            <div class="phone-shell">
-              <div class="phone-notch"></div>
-              <div class="phone-screen-inner">
-
-                <!-- Slide 1: MA Intake -->
-                <div class="hero-slide active" aria-hidden="true">
-                  <div class="hs-statusbar">
-                    <span>10:32</span>
-                    <span>Ponce AI</span>
-                    <span>●●●●&thinsp;▲&thinsp;▮</span>
-                  </div>
-                  <div class="hs-appbar">
-                    <span class="hs-back">‹</span>
-                    <span class="hs-title">Patient intake</span>
-                  </div>
-                  <div class="hs-content">
-                    <div class="hs-patient">
-                      <div class="hs-avatar">SM</div>
-                      <div>
-                        <div class="hs-patient-name">Sarah M.</div>
-                        <div class="hs-patient-meta">Today · 10:30 AM</div>
-                      </div>
-                    </div>
-                    <div class="hs-photos">
-                      <div class="hs-photo-block">
-                        <div class="hs-photo-img"><div class="hs-photo-face"></div></div>
-                        <div class="hs-photo-label">Front</div>
-                      </div>
-                      <div class="hs-photo-block">
-                        <div class="hs-photo-img"><div class="hs-photo-face side"></div></div>
-                        <div class="hs-photo-label">Side</div>
-                      </div>
-                    </div>
-                    <div class="hs-label">Today's interests</div>
-                    <div class="hs-chips">
-                      <span class="hs-chip">Forehead wrinkles</span>
-                      <span class="hs-chip">Cheek volume</span>
-                      <span class="hs-chip empty">Lip lines</span>
-                    </div>
-                    <div style="display:flex;flex-direction:column;gap:5px">
-                      <div class="hs-status"><span class="hs-check">✓</span> Photos captured</div>
-                      <div class="hs-status"><span class="hs-check">✓</span> Skin quiz complete</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Slide 2: Provider Treatment Plan -->
-                <div class="hero-slide" aria-hidden="true">
-                  <div class="hs-statusbar">
-                    <span>10:48</span>
-                    <span>Ponce AI</span>
-                    <span>●●●●&thinsp;▲&thinsp;▮</span>
-                  </div>
-                  <div class="hs-appbar">
-                    <span class="hs-back">‹</span>
-                    <span class="hs-title">Treatment plan</span>
-                  </div>
-                  <div class="hs-content">
-                    <div class="hs-face">
-                      <div class="hs-face-container">
-                        <div class="hs-face-oval"></div>
-                        <div class="hs-dot" style="top:22%;left:50%"></div>
-                        <div class="hs-dot" style="top:56%;left:24%"></div>
-                        <div class="hs-dot" style="top:56%;left:76%"></div>
-                      </div>
-                    </div>
-                    <div class="hs-rx-list">
-                      <div class="hs-rx-item">
-                        <div class="hs-rx-left">
-                          <div class="hs-rx-name">Botox</div>
-                          <div class="hs-rx-area">Forehead lines</div>
-                        </div>
-                        <span class="hs-rx-badge today">Today</span>
-                      </div>
-                      <div class="hs-rx-item">
-                        <div class="hs-rx-left">
-                          <div class="hs-rx-name">Sculptra</div>
-                          <div class="hs-rx-area">Cheek volume</div>
-                        </div>
-                        <span class="hs-rx-badge sched">Schedule</span>
-                      </div>
-                      <div class="hs-rx-item">
-                        <div class="hs-rx-left">
-                          <div class="hs-rx-name">Microneedling</div>
-                          <div class="hs-rx-area">Skin texture</div>
-                        </div>
-                        <span class="hs-rx-badge sched">Schedule</span>
-                      </div>
-                    </div>
-                    <div class="hs-skincare">+ Retinol serum · SPF 50</div>
-                  </div>
-                </div>
-
-                <!-- Slide 3: Post-Visit Summary -->
-                <div class="hero-slide" aria-hidden="true">
-                  <div class="hs-statusbar">
-                    <span>2:14</span>
-                    <span>Ponce AI</span>
-                    <span>●●●●&thinsp;▲&thinsp;▮</span>
-                  </div>
-                  <div class="hs-appbar" style="justify-content:center">
-                    <span class="hs-title">Your treatment plan</span>
-                  </div>
-                  <div class="hs-content">
-                    <div class="hs-pv-header">
-                      <div class="hs-pv-name">Sarah M.</div>
-                      <div class="hs-pv-count">3 treatments</div>
-                    </div>
-                    <div class="hs-pv-face-row">
-                      <div class="hs-pv-mini-face">
-                        <div class="hs-pv-dot" style="top:22%;left:50%"></div>
-                        <div class="hs-pv-dot" style="top:56%;left:26%"></div>
-                        <div class="hs-pv-dot" style="top:56%;left:74%"></div>
-                      </div>
-                      <div class="hs-pv-zones">
-                        <div class="hs-pv-zone">Forehead wrinkles</div>
-                        <div class="hs-pv-zone">Cheek volume</div>
-                        <div class="hs-pv-zone">Skin texture</div>
-                      </div>
-                    </div>
-                    <div class="hs-pv-card">
-                      <div class="hs-pv-card-name">Sculptra Filler</div>
-                      <div class="hs-pv-card-sub">Cheek volume restoration</div>
-                      <div class="hs-pv-card-btns">
-                        <span class="hs-pv-card-btn">▶ Video</span>
-                        <span class="hs-pv-card-btn">Before/afters</span>
-                      </div>
-                    </div>
-                    <div class="hs-pv-book">
-                      <span class="hs-pv-book-txt">Book next visit</span>
-                      <span class="hs-pv-book-cta">Schedule →</span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="phone-home-bar"></div>
-            </div>
-            <div class="phone-dots">
-              <span class="hero-dot active"></span>
-              <span class="hero-dot"></span>
-              <span class="hero-dot"></span>
-            </div>
-            <div class="hero-badge plan">Interactive post-visit plan</div>
           </div>
         </div>
       </section>
 
-      <!-- ═══ PROOF BAND ══════════════════════════════════ -->
-      <section class="proof-band">
-        <div class="inner">
-          <div class="proof-number">+33%</div>
-          <p>increase in patient spend — proven in a 45-day pilot with a real medspa. 33 patients. 2 providers. $15,729 in new revenue.</p>
+      <!-- ═══ WHY IT MATTERS ══════════════════════════════ -->
+      <section class="why-plan">
+        <div class="inner why-plan-grid">
+          <div>
+            <p class="eyebrow">Why the plan matters</p>
+            <h2>Patients buy when the next step feels clear.</h2>
+            <p class="lead">Ponce turns interest into a plan patients can keep learning from on their phone.</p>
+          </div>
+          <div class="confidence-stack">
+            <div class="confidence-card">
+              <strong>Identifies treatment opportunities</strong>
+              <p>Recommendations tied to their own face.</p>
+            </div>
+            <div class="confidence-card">
+              <strong>Reinforces treatment value</strong>
+              <p>Videos, before/afters, and simple explanations.</p>
+            </div>
+            <div class="confidence-card">
+              <strong>Saves providers time</strong>
+              <p>Less repetition. More clinical judgment.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1212,169 +2130,59 @@
       <section class="section">
         <div class="inner">
           <p class="eyebrow">How it works</p>
-          <h2>From check-in to treatment roadmap — in one visit.</h2>
-          <div class="steps">
-
-            <!-- Step 1: MA Intake -->
-            <article class="step reveal">
-              <div class="step-screen">
-                <div class="asc-statusbar">
-                  <span>10:32 &nbsp; Ponce AI</span>
-                  <span>●●●●&thinsp;▲&thinsp;▮</span>
-                </div>
-                <div class="asc-appbar">
-                  <span class="asc-back">‹</span>
-                  <span class="asc-title">Patient intake</span>
-                </div>
-                <div class="asc-content">
-                  <div class="asc-patient-row">
-                    <div class="asc-patient-avatar">SM</div>
-                    <div>
-                      <div class="asc-patient-name">Sarah M.</div>
-                      <div class="asc-patient-meta">Today · 10:30 AM</div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="asc-label">Patient photos</div>
-                    <div class="asc-photos">
-                      <div class="asc-photo-thumb">
-                        <div class="asc-photo-img"><div class="asc-photo-face"></div></div>
-                        <div class="asc-photo-label">Front</div>
-                      </div>
-                      <div class="asc-photo-thumb">
-                        <div class="asc-photo-img"><div class="asc-photo-face side"></div></div>
-                        <div class="asc-photo-label">Side</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="asc-label">Today's interests</div>
-                    <div class="asc-chips">
-                      <span class="asc-chip active">Forehead wrinkles</span>
-                      <span class="asc-chip active">Cheek volume</span>
-                      <span class="asc-chip">Lip lines</span>
-                    </div>
-                  </div>
-                  <div class="asc-status-list">
-                    <div class="asc-status-item"><span class="asc-check">✓</span> Photos captured</div>
-                    <div class="asc-status-item"><span class="asc-check">✓</span> Skin quiz complete</div>
-                  </div>
-                </div>
+          <h2>Find opportunities. Build the plan. Sell between visits.</h2>
+          <div class="story-sections">
+            <article class="story-section reveal">
+              <div class="simple-visual" aria-hidden="true">
+                <video
+                  class="simple-scan-video"
+                  src="assets/hero-concepts/ponce-ai-ultra-minimal-iphone-face-mesh-v5-pingpong.mp4"
+                  poster="assets/hero-concepts/ponce-ai-ultra-minimal-iphone-face-mesh-v5-poster.jpg"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
               </div>
-              <div class="step-copy">
-                <div class="step-num">1</div>
-                <strong>The MA captures everything before you walk in.</strong>
-                <p>Photos from the front and side. Treatment interests and history. A 60-second skin quiz. The medical assistant collects it all in Ponce during check-in — before the provider walks in.</p>
+              <div>
+                <span class="story-kicker">01 · Assessment + discovery</span>
+                <h3>Find treatment opportunities.</h3>
+                <p>Photos, interests, and quiz answers reveal what the patient is most likely to want next.</p>
               </div>
             </article>
-
-            <!-- Step 2: Provider Plan -->
-            <article class="step reveal reveal-delay-1">
-              <div class="step-screen">
-                <div class="asc-statusbar">
-                  <span>10:48 &nbsp; Ponce AI</span>
-                  <span>●●●●&thinsp;▲&thinsp;▮</span>
-                </div>
-                <div class="asc-appbar">
-                  <span class="asc-back">‹</span>
-                  <span class="asc-title">Treatment plan</span>
-                  <span class="asc-subtitle">Sarah M.</span>
-                </div>
-                <div class="asc-content">
-                  <div class="asc-face-diagram">
-                    <div class="asc-face-container">
-                      <div class="asc-face-oval-main"></div>
-                      <div class="asc-anno-dot" style="top:20%;left:50%"></div>
-                      <div class="asc-anno-label" style="top:20%;left:58%;transform:translate(0,-50%)">Forehead</div>
-                      <div class="asc-anno-dot" style="top:56%;left:22%"></div>
-                      <div class="asc-anno-label" style="top:56%;right:56%;transform:translate(0,-50%);text-align:right">Cheeks</div>
-                      <div class="asc-anno-dot" style="top:56%;left:78%"></div>
-                    </div>
-                  </div>
-                  <div class="asc-rx-list">
-                    <div class="asc-rx-item">
-                      <div class="asc-rx-info">
-                        <div class="asc-rx-name">Botox</div>
-                        <div class="asc-rx-area">Forehead lines</div>
-                      </div>
-                      <span class="asc-rx-badge today">Today</span>
-                    </div>
-                    <div class="asc-rx-item">
-                      <div class="asc-rx-info">
-                        <div class="asc-rx-name">Sculptra Filler</div>
-                        <div class="asc-rx-area">Cheek volume</div>
-                      </div>
-                      <span class="asc-rx-badge schedule">Schedule</span>
-                    </div>
-                    <div class="asc-rx-item">
-                      <div class="asc-rx-info">
-                        <div class="asc-rx-name">Microneedling</div>
-                        <div class="asc-rx-area">Skin texture</div>
-                      </div>
-                      <span class="asc-rx-badge schedule">Schedule</span>
-                    </div>
-                  </div>
-                  <div class="asc-skincare-note">+ Retinol serum · SPF 50</div>
+            <article class="story-section reveal reveal-delay-1">
+              <div class="simple-visual" aria-hidden="true">
+                <div class="mini-plan-card">
+                  <div class="mini-plan-head"><span>Sarah M.</span><span class="mini-ai-chip">AI plan</span></div>
+                  <div class="mini-plan-row"><div><strong>Botox</strong><small>Forehead lines</small></div><span>Today</span></div>
+                  <div class="mini-plan-row"><div><strong>Sculptra</strong><small>Cheek volume</small></div><span>Schedule</span></div>
+                  <div class="mini-share-bar">Share plan <span>Send</span></div>
                 </div>
               </div>
-              <div class="step-copy">
-                <div class="step-num">2</div>
-                <strong>The provider builds a personalized plan in minutes.</strong>
-                <p>Patient photos, skin quiz results, and treatment interests — all in one view. The provider adds annotated recommendations, notes same-day services, and curates the post-visit plan.</p>
+              <div>
+                <span class="story-kicker">02 · Plan + share</span>
+                <h3>Build the plan.</h3>
+                <p>The provider reviews, edits, and sends the plan to the patient's phone.</p>
               </div>
             </article>
-
-            <!-- Step 3: Post-Visit Summary -->
-            <article class="step reveal reveal-delay-2">
-              <div class="step-screen">
-                <div class="asc-statusbar">
-                  <span>2:14 &nbsp; Ponce AI</span>
-                  <span>●●●●&thinsp;▲&thinsp;▮</span>
-                </div>
-                <div class="asc-appbar" style="justify-content:center">
-                  <span class="asc-title">Your treatment plan</span>
-                </div>
-                <div class="asc-content">
-                  <div class="asc-pv-patient">
-                    <span class="asc-pv-name">Sarah M.</span>
-                    <span class="asc-pv-count">3 treatments</span>
-                  </div>
-                  <div class="asc-pv-face-row">
-                    <div class="asc-pv-face-container">
-                      <div class="asc-pv-face-oval"></div>
-                      <div class="asc-pv-dot" style="top:22%;left:50%"></div>
-                      <div class="asc-pv-dot" style="top:56%;left:24%"></div>
-                      <div class="asc-pv-dot" style="top:56%;left:76%"></div>
-                    </div>
-                    <div class="asc-pv-zones">
-                      <div class="asc-pv-zone">Forehead wrinkles</div>
-                      <div class="asc-pv-zone">Cheek volume</div>
-                      <div class="asc-pv-zone">Skin texture</div>
-                    </div>
-                  </div>
-                  <div class="asc-pv-card">
-                    <div class="asc-pv-card-name">Sculptra Filler</div>
-                    <div class="asc-pv-card-sub">Cheek volume restoration</div>
-                    <div class="asc-pv-actions">
-                      <span class="asc-pv-btn">▶ Watch video</span>
-                      <span class="asc-pv-btn">Before/afters</span>
-                    </div>
-                  </div>
-                  <div class="asc-pv-book-card">
-                    <span class="asc-pv-book-title">Book your next visit</span>
-                    <span class="asc-pv-book-cta">Schedule →</span>
-                  </div>
+            <article class="story-section reveal reveal-delay-2">
+              <div class="simple-visual dark" aria-hidden="true">
+                <div class="mini-patient-phone">
+                  <div class="mini-video">▶</div>
+                  <strong class="mini-phone-title">Sculptra for cheek volume</strong>
+                  <span class="mini-phone-copy">Watch, compare, book.</span>
+                  <div class="mini-phone-actions"><span></span><span></span></div>
+                  <div class="mini-book-bar">Book <span>→</span></div>
                 </div>
               </div>
-              <div class="step-copy">
-                <div class="step-num">3</div>
-                <strong>The patient takes home a plan that keeps selling.</strong>
-                <p>An interactive post-visit summary with annotated photos, treatment explanations, provider videos, and peer before/afters. She browses at home — and books when she's ready.</p>
+              <div>
+                <span class="story-kicker">03 · Learn + convert</span>
+                <h3>Sell between visits.</h3>
+                <p>Patients learn on their own time, compare results, and book when ready.</p>
               </div>
             </article>
-
           </div>
-          <p class="closing-line">Consultations become roadmaps. Roadmaps become revenue.</p>
         </div>
       </section>
 
@@ -1386,12 +2194,10 @@
               <span class="adoption-num">10</span>
               <span class="adoption-label">min MA intake</span>
             </div>
-            <div class="adoption-divider"></div>
             <div class="adoption-stat">
               <span class="adoption-num">5</span>
               <span class="adoption-label">min to build plan</span>
             </div>
-            <div class="adoption-divider"></div>
             <div class="adoption-stat">
               <span class="adoption-num">0</span>
               <span class="adoption-label">extra staff needed</span>
@@ -1399,27 +2205,27 @@
           </div>
           <div class="callout-box">
             <p class="eyebrow">Team adoption</p>
-            <h2>Worried your team won't use it?</h2>
+            <h2>Fits the consult you already run.</h2>
             <div class="use-flow-list">
               <div class="use-flow-item">
                 <div class="use-flow-icon">1</div>
                 <div>
-                  <strong>The MA runs intake — 10 minutes, tops.</strong>
-                  <p>Photos, treatment interests, and a quick skin quiz — all collected through Ponce during check-in. Everything flows to the provider automatically.</p>
+                  <strong>Mobile intake</strong>
+                  <p>Photos, interests, quiz.</p>
                 </div>
               </div>
               <div class="use-flow-item">
                 <div class="use-flow-icon">2</div>
                 <div>
-                  <strong>The provider builds the plan in one view.</strong>
-                  <p>Photos, quiz results, and patient interests already organized. Add recommendations, note same-day services, and send the post-visit plan — a few taps.</p>
+                  <strong>AI-organized consult</strong>
+                  <p>Prioritized recommendations.</p>
                 </div>
               </div>
               <div class="use-flow-item">
                 <div class="use-flow-icon">3</div>
                 <div>
-                  <strong>The patient does the rest from home.</strong>
-                  <p>She receives an interactive plan she can explore at her own pace, watch provider videos, browse before/afters, and book — no follow-up calls needed.</p>
+                  <strong>Mobile follow-through</strong>
+                  <p>Education and booking at home.</p>
                 </div>
               </div>
             </div>
@@ -1432,18 +2238,16 @@
         <div class="inner">
           <p class="eyebrow">The proof</p>
           <h2>Real results from a real medspa</h2>
-          <p class="lead">The Treatment Skin Boutique · Injectables-focused · 45-day pilot · 2 providers · 33 patients</p>
+          <p class="lead">A 45-day pilot with mobile AI plans.</p>
           <div class="proof-layout">
             <div class="result-grid">
-              <article class="metric reveal"><strong>$15,729</strong><p>in new revenue from 33 patients in 45 days</p><div class="metric-visual revenue-stack" aria-hidden="true"><span>$</span><span>$</span><span>$</span></div></article>
-              <article class="metric reveal reveal-delay-1"><strong>~6</strong><p>new treatments discovered per patient</p><div class="metric-visual treatment-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
-              <article class="metric reveal reveal-delay-2"><strong>61%</strong><p>of AI recommendations actively saved</p><div class="metric-visual" aria-hidden="true"><div class="save-ring"></div></div></article>
-              <article class="metric reveal reveal-delay-3"><strong>4.5 / 5</strong><p>patient experience rating</p><div class="metric-visual stars" aria-hidden="true">★★★★½</div></article>
+              <article class="metric reveal"><strong>$15,729</strong><p>new revenue</p><div class="metric-visual revenue-bar" aria-hidden="true"></div></article>
+              <article class="metric reveal reveal-delay-1"><strong>~6</strong><p>treatments discovered per patient</p><div class="metric-visual treatment-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
+              <article class="metric reveal reveal-delay-2"><strong>61%</strong><p>recommendations saved</p><div class="metric-visual" aria-hidden="true"><div class="save-ring"></div></div></article>
+              <article class="metric reveal reveal-delay-3"><strong>4.5 / 5</strong><p>patient rating</p><div class="metric-visual stars" aria-hidden="true">★★★★½</div></article>
             </div>
             <div class="proof-story">
-              <blockquote class="quote reveal">"It was fun to learn how my injector can help me look the way I want." — Pilot patient, The Treatment Skin Boutique</blockquote>
-              <p class="reveal" style="color:rgba(36,28,24,0.7)">They started with one location. Based on these results, they're now rolling out to all five.</p>
-              <p class="reveal subtle">Whether your practice focuses on injectables, skin rejuvenation, body contouring, or a mix of everything — the AI adapts to your specific treatment menu. It recommends only the services you actually offer.</p>
+              <blockquote class="quote reveal">"It was fun to learn how my injector can help me look the way I want." — Pilot patient</blockquote>
             </div>
           </div>
         </div>
@@ -1454,12 +2258,12 @@
         <div class="inner offer-card">
           <div>
             <p class="eyebrow">The offer</p>
-            <h2>Try it with 5 patients. See the results. Then decide.</h2>
-            <p class="lead">A free pilot gives you real numbers from your own practice before you buy anything.</p>
-            <p><strong>Zero risk. Real data. Your patients.</strong></p>
+            <h2>Try the mobile AI consult with 5 patients.</h2>
+            <p class="lead">Real patients. Real plans. No cost.</p>
             <a class="button" href="#pilot-section-form">Start Your Free Pilot</a>
           </div>
           <div class="offer-visual reveal">
+            <img class="offer-photo" src="assets/ideogram-landing/pilot-proof.jpeg" alt="" aria-hidden="true" loading="lazy" />
             <div class="offer-visual-inner pilot-board" aria-label="Free pilot details">
               <div class="pilot-tile"><strong>5</strong><span>patients</span></div>
               <div class="pilot-tile"><strong>30</strong><span>days</span></div>
@@ -1473,22 +2277,22 @@
       <section class="section">
         <div class="inner">
           <p class="eyebrow">Why this is different</p>
-          <h2>Why practices are choosing this over cameras</h2>
+          <h2>Not another camera system.</h2>
           <div class="contrast-list">
             <div class="contrast reveal">
               <div class="contrast-visual phone-symbol" aria-hidden="true"></div>
-              <strong>The full consultation, not just the face</strong>
-              <p><strong>Hardware systems</strong> capture imaging during the visit. <strong>Ponce AI</strong> structures the entire consultation — photos, skin quiz, treatment interests, and a plan that lives on the patient's phone long after she leaves.</p>
+              <strong>Runs on mobile</strong>
+              <p>No dedicated room or hardware.</p>
             </div>
             <div class="contrast reveal reveal-delay-1">
               <div class="contrast-visual timeline-symbol" aria-hidden="true"></div>
-              <strong>A plan she keeps, not a chart note</strong>
-              <p><strong>Consultation notes</strong> live in a chart no patient ever sees. <strong>Ponce AI</strong> turns every consult into an interactive post-visit plan the patient takes home, revisits, and books from.</p>
+              <strong>Lives after the visit</strong>
+              <p>The plan goes home with the patient.</p>
             </div>
             <div class="contrast reveal reveal-delay-2">
               <div class="contrast-visual interest-symbol" aria-hidden="true"></div>
-              <strong>Revenue that books itself</strong>
-              <p><strong>Patients forget</strong> treatment names and never follow through on what they discussed. <strong>Ponce AI</strong> gives them annotated photos, treatment explanations, provider videos, and a booking link — they come back on their own time.</p>
+              <strong>Built to reinforce value</strong>
+              <p>Education stays one tap away.</p>
             </div>
           </div>
         </div>
@@ -1499,8 +2303,8 @@
         <div class="inner origin-grid">
           <div>
             <p class="eyebrow">Founding team</p>
-            <h2>A clinic problem, built by a surgeon and operator.</h2>
-            <p class="lead">Ponce AI began inside Dr. Tanya Judge's San Francisco plastic surgery practice, then became a product for medspas that want every consultation to have a second act.</p>
+            <h2>A mobile AI consult, built from a real clinic problem.</h2>
+            <p class="lead">Born inside Dr. Tanya Judge's practice.</p>
           </div>
           <div>
             <div class="bio-grid">
@@ -1508,18 +2312,18 @@
                 <img class="bio-avatar" src="assets/founders/dr-tanya-judge.avif" alt="Dr. Tanya Judge, MD" loading="lazy" />
                 <div class="bio-body">
                   <strong>Dr. Tanya Judge, MD</strong>
-                  <p class="subtle">Chief Medical Officer. Board-certified plastic surgeon. Built the clinical foundation of Ponce AI from years of treating real patients in San Francisco.</p>
+                  <p class="subtle">Board-certified plastic surgeon and clinical lead.</p>
                 </div>
               </article>
               <article class="bio reveal reveal-delay-1">
                 <img class="bio-avatar" src="assets/founders/sugam-slack-portrait.png" alt="Sugam Arora" loading="lazy" />
                 <div class="bio-body">
                   <strong>Sugam Arora</strong>
-                  <p class="subtle">CEO and Co-Founder. Previously at Lyft, Google, Sun Microsystems. UCLA Anderson MBA. Built the technology to solve the problem he saw firsthand in Dr. Judge's practice.</p>
+                  <p class="subtle">CEO and co-founder. Built Ponce from the clinic workflow outward.</p>
                 </div>
               </article>
             </div>
-            <blockquote class="quote" style="margin-top: 18px">"Patients who learned more were the most engaged and purchased the most. That's not a theory. That's what we saw in our own clinic before we turned it into a product." — Dr. Tanya Judge, MD</blockquote>
+            <blockquote class="quote" style="margin-top: 18px">"Patients who learned more purchased more." — Dr. Tanya Judge, MD</blockquote>
           </div>
         </div>
       </section>
@@ -1528,7 +2332,7 @@
       <section class="section logo-cloud-section">
         <div class="inner">
           <p class="eyebrow">Featured, presented, integrated</p>
-          <h2>Built for the aesthetics ecosystem.</h2>
+          <h2>Built for aesthetics.</h2>
           <div class="logo-cloud" aria-label="Recognition, event, and integration logos">
             <div class="logo-item reveal"><img src="assets/logos/medtech-innovator.jpg" alt="MedTech Innovator" /></div>
             <div class="logo-item reveal reveal-delay-1"><img src="assets/logos/aesthetics-tech-forum.png" alt="Aesthetics Tech Forum" /></div>
@@ -1545,16 +2349,14 @@
       <section class="section">
         <div class="inner">
           <p class="eyebrow">Quick answers</p>
-          <h2>Quick answers</h2>
+          <h2>FAQ</h2>
           <div class="faq">
-            <details open><summary>What does the medical assistant actually do?</summary><p>Takes front and side photos of the patient, collects treatment interests and history, and runs a quick skin quiz. About 10 minutes during check-in — everything feeds into Ponce automatically before the provider walks in.</p></details>
-            <details><summary>How long does it take to build the treatment plan?</summary><p>Most providers complete the plan in 5–10 minutes. Ponce organizes photos, quiz results, and interests in one view. The provider adds recommendations and sends the post-visit summary in a few taps.</p></details>
-            <details><summary>What's in the post-visit summary?</summary><p>Annotated photos of the patient's face, personalized treatment recommendations with explanations, provider videos about each treatment, before/after examples from patients with similar concerns, and a booking link for next steps. Patients can access it anytime from their phone.</p></details>
-            <details><summary>Does the patient need to download an app?</summary><p>No app to download. The post-visit summary opens in any mobile browser — just like a link. Patients can save it to their home screen if they want easy access later.</p></details>
-            <details><summary>Do I need any hardware or equipment?</summary><p>None. Photos are taken in your clinic on any smartphone or tablet. The provider uses Ponce in a browser on any device. No cameras, no devices, no IT support.</p></details>
-            <details><summary>Will this feel pushy to my patients?</summary><p>The opposite. Patients receive a personalized plan they explore at their own pace — with explanations and visuals instead of a sales pitch. That's why patients rate the experience 4.5 out of 5.</p></details>
-            <details><summary>What does it cost?</summary><p>Monthly software subscription — a fraction of what hardware systems cost. Most practices see it pay for itself within the first month from additional treatments booked. We'll walk through the exact math on your demo call.</p></details>
-            <details><summary>Can I try it before I commit?</summary><p>Yes. Every new practice starts with a free pilot: 5 patients, 30 days, zero cost. You see real numbers from your own practice before making any decision.</p></details>
+            <details><summary>What does the MA do?</summary><p>Collects photos, interests, and quiz results on mobile.</p></details>
+            <details><summary>What does the provider do?</summary><p>Reviews the AI-organized consult, adds recommendations, and shares the plan.</p></details>
+            <details><summary>What does the patient get?</summary><p>A mobile treatment plan with summaries, videos, before/afters, and booking.</p></details>
+            <details><summary>Do patients download an app?</summary><p>No. The plan opens in a mobile browser.</p></details>
+            <details><summary>Do I need hardware?</summary><p>No cameras, no dedicated room, no IT setup.</p></details>
+            <details><summary>Can I try it first?</summary><p>Yes. Start with 5 patients over 30 days at no cost.</p></details>
           </div>
         </div>
       </section>
@@ -1565,9 +2367,8 @@
           <div class="final-card">
             <div class="final-copy">
               <p class="eyebrow">Free pilot</p>
-              <h2>Try Ponce AI with 5 patients.</h2>
-              <p class="lead">See what patients discover, save, and take home — then decide if it's right for your practice.</p>
-              <p class="subtle" style="margin-top: 14px">15 minutes. No pressure.</p>
+              <h2>Try the mobile AI consult with 5 patients.</h2>
+              <p class="lead">Five patients. Thirty days. No cost.</p>
             </div>
             <div class="final-mark">
               <form class="pilot-form" id="pilot-section-form">
@@ -1661,23 +2462,23 @@
         });
       });
 
-      /* ── Hero phone slide cycling ──────────────────────── */
+      /* ── Hero phone slide cycling (if present) ───────────── */
       const heroSlides = document.querySelectorAll(".hero-slide");
       const heroDots = document.querySelectorAll(".hero-dot");
       let currentSlide = 0;
       if (heroSlides.length > 1) {
-        setInterval(() => {
+        window.setInterval(() => {
           heroSlides[currentSlide].classList.remove("active");
-          heroDots[currentSlide].classList.remove("active");
+          heroDots[currentSlide]?.classList.remove("active");
           currentSlide = (currentSlide + 1) % heroSlides.length;
           heroSlides[currentSlide].classList.add("active");
-          heroDots[currentSlide].classList.add("active");
+          heroDots[currentSlide]?.classList.add("active");
         }, 4200);
       }
 
       /* ── Scroll reveals ────────────────────────────────── */
       const revealTargets = document.querySelectorAll(
-        ".step, .metric, .contrast, .bio, .quote, .logo-item, .offer-visual, .use-flow-item, .adoption-panel, .proof-story p"
+        ".story-section, .metric, .contrast, .bio, .quote, .logo-item, .offer-visual, .use-flow-item, .adoption-panel, .proof-story p"
       );
       if ("IntersectionObserver" in window) {
         revealTargets.forEach(t => t.classList.add("reveal"));
