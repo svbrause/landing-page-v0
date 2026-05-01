@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#18100c" />
     <title>Ponce AI | Modernize aesthetic consultations with AI</title>
     <meta
       name="description"
@@ -277,13 +278,29 @@
         cursor: pointer;
         backdrop-filter: blur(18px);
         box-shadow: 0 16px 44px rgba(24, 17, 14, 0.13);
+        opacity: 0;
+        pointer-events: none;
         transition:
+          opacity 300ms ease,
+          background 300ms ease,
+          color 300ms ease,
+          border-color 300ms ease,
           transform 220ms ease,
           box-shadow 220ms ease;
       }
       .top-cta:hover {
         transform: translateY(-2px);
         box-shadow: 0 20px 54px rgba(24, 17, 14, 0.18);
+      }
+      body.has-scrolled .top-cta {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      body.nav-over-dark .top-cta {
+        background: rgba(31, 23, 20, 0.72);
+        color: #fffaf5;
+        border-color: rgba(255, 250, 245, 0.22);
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
       }
       .hero-grid {
         position: relative;
@@ -355,7 +372,6 @@
         max-width: 860px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 24px;
         color: rgba(255, 250, 245, 0.48);
         font-size: 0.88rem;
       }
@@ -1777,6 +1793,69 @@
         margin: 0;
         color: rgba(255, 250, 245, 0.66);
       }
+      .conf-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        margin-bottom: 12px;
+        border-radius: 10px;
+        background: rgba(255, 250, 245, 0.1);
+        color: rgba(255, 250, 245, 0.78);
+        flex-shrink: 0;
+      }
+      .why-compare {
+        margin: 22px 0 24px;
+        display: grid;
+        gap: 10px;
+      }
+      .why-compare-row {
+        display: grid;
+        grid-template-columns: 100px 1fr 52px;
+        align-items: center;
+        gap: 10px;
+      }
+      .why-compare-label {
+        font-size: 0.75rem;
+        color: rgba(255, 250, 245, 0.5);
+        letter-spacing: 0.02em;
+      }
+      .why-compare-track {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 250, 245, 0.1);
+        overflow: hidden;
+      }
+      .why-compare-track.accent {
+        background: rgba(255, 250, 245, 0.14);
+      }
+      .why-compare-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: rgba(255, 250, 245, 0.3);
+        transition: width 800ms ease;
+      }
+      .why-compare-track.accent .why-compare-fill {
+        background: linear-gradient(90deg, #c88474, #e8a898);
+      }
+      .why-compare-val {
+        font-size: 0.78rem;
+        color: rgba(255, 250, 245, 0.52);
+        text-align: right;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+      .why-compare-val.accent {
+        color: #e8a898;
+      }
+      .why-compare-caption {
+        margin: 2px 0 0;
+        font-size: 0.68rem;
+        color: rgba(255, 250, 245, 0.32);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
 
       /* ─── HERO SLIDE: MINI COMPONENTS ────────────────── */
       .hs-patient {
@@ -3061,6 +3140,7 @@
       .revenue-bar {
         width: 100%;
         height: 6px;
+        min-height: 0;
         border-radius: 999px;
         background: rgba(243, 221, 212, 0.55);
         overflow: hidden;
@@ -3340,8 +3420,13 @@
         background: rgba(255, 255, 255, 0.62);
         transition:
           transform 220ms ease,
-          border-color 220ms ease;
+          border-color 220ms ease,
+          box-shadow 220ms ease;
         border: 1px solid var(--line);
+        text-decoration: none;
+      }
+      .logo-item:hover {
+        box-shadow: var(--shadow);
       }
       .logo-item:hover {
         transform: translateY(-2px);
@@ -3541,24 +3626,26 @@
       /* ─── STICKY MOBILE ───────────────────────────────── */
       .sticky-mobile {
         position: fixed;
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
+        left: 50%;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
         display: none;
         align-items: center;
         justify-content: center;
-        min-height: 54px;
+        min-height: 50px;
+        padding: 0 72px;
         border: 0;
         border-radius: 999px;
-        background: var(--espresso);
-        color: #fffaf5;
+        background: #fffaf5;
+        color: var(--espresso);
         font: inherit;
+        font-size: 0.92rem;
         text-decoration: none;
         font-weight: 850;
+        white-space: nowrap;
         z-index: 15;
         opacity: 0;
         pointer-events: none;
-        transform: translateY(14px);
+        transform: translateX(-50%) translateY(14px);
         transition:
           opacity 240ms ease,
           transform 240ms ease;
@@ -3567,7 +3654,7 @@
       body.show-sticky .sticky-mobile {
         opacity: 1;
         pointer-events: auto;
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
       }
 
       /* ─── REVEAL ANIMATION ────────────────────────────── */
@@ -3689,31 +3776,44 @@
         .final-card {
           min-height: auto;
         }
+        .adoption-panel {
+          order: 2;
+        }
+        .callout-box {
+          order: 1;
+        }
       }
 
       /* ─── MOBILE ──────────────────────────────────────── */
       @media (max-width: 640px) {
         .section {
-          padding: 68px 18px;
+          padding: 68px 24px;
         }
         .hero {
-          padding-left: 18px;
-          padding-right: 18px;
+          min-height: 0;
+          padding: 0 18px 36px;
+        }
+        .hero-grid {
+          gap: 10px;
+          min-height: 0;
         }
         h1 {
-          font-size: clamp(2.8rem, 13vw, 4.5rem);
+          font-size: clamp(2.4rem, 11vw, 3.8rem);
         }
         .hero-copy {
-          text-align: left;
+          text-align: center;
+          padding-top: 96px;
         }
-        .hero-copy h1,
-        .hero-copy .lead {
-          margin-left: 0;
-          margin-right: 0;
+        .hero-actions {
+          margin-top: 18px;
         }
         .hero .lead {
-          max-width: 360px;
-          font-size: 1rem;
+          font-size: 0.95rem;
+          max-width: 300px;
+        }
+        .hc-frame,
+        .hc-video {
+          min-height: 78px;
         }
         .story-card.detect,
         .story-card.plan,
@@ -3730,14 +3830,6 @@
         .story-section {
           padding: 20px;
         }
-        .hero-actions {
-          align-items: flex-start;
-          justify-content: flex-start;
-        }
-        .hero-footer {
-          align-items: flex-start;
-          margin-top: 0;
-        }
         .trust-strip {
           display: none;
         }
@@ -3746,6 +3838,20 @@
         }
         .proof-testimonial {
           grid-template-columns: 1fr;
+          padding-top: 36px;
+        }
+        .proof-testimonial-photo {
+          max-width: 180px;
+          margin: 0 auto;
+        }
+        .callout {
+          padding-bottom: 32px;
+        }
+        .proof-section {
+          padding-top: 32px;
+        }
+        .why-compare-row {
+          grid-template-columns: 80px 1fr 46px;
         }
         .adoption-panel {
           grid-template-columns: 1fr;
@@ -3762,9 +3868,6 @@
         }
         .sticky-mobile {
           display: flex;
-          min-height: 50px;
-          font-size: 0.9rem;
-          white-space: nowrap;
         }
         .top-cta {
           display: none;
@@ -3775,11 +3878,25 @@
           transform: translateY(-16px);
         }
         .offer-visual {
-          min-height: 480px;
-          padding: 16px;
+          min-height: 0;
+          padding: 24px 16px;
+        }
+        .offer-photo {
+          display: none;
+        }
+        .offer-visual::before {
+          display: none;
+        }
+        .offer-visual {
+          background: rgba(255, 250, 245, 0.08);
+          border: 1px solid rgba(255, 250, 245, 0.14);
+        }
+        .pilot-board {
+          grid-template-columns: repeat(3, 1fr);
         }
         .pilot-tile {
-          min-height: 94px;
+          min-height: 0;
+          padding: 16px 10px;
         }
         .pilot-form {
           grid-template-columns: 1fr;
@@ -3799,15 +3916,24 @@
 
     <div class="page">
       <!-- ═══ HERO ═══════════════════════════════════════ -->
-      <section class="hero" id="top">
+      <section class="hero" id="top" data-theme="dark">
         <div class="inner hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">AI aesthetic consults for medspas</p>
-            <h1>Every patient gets a plan.</h1>
+            <h1>Patients with a plan spend 2× more.</h1>
             <p class="lead">
-              Effortlessly develop personalized &amp; objective treatment plans
-              for every patient.
+              Ponce AI helps your team build personalized treatment plans
+              patients keep on their phone - so they book more, come back sooner,
+              and spend more over time.
             </p>
+            <div class="hero-actions">
+              <a class="button" href="#pilot-section-form">Start Free Pilot</a>
+            </div>
+          </div>
+
+          <div class="trust-strip">
+            <span>Surgeon-built</span>
+            <span>10,000+ cases</span>
+            <span>Live medspa pilots</span>
           </div>
 
           <div class="hero-visual" aria-label="Animated product story">
@@ -3827,27 +3953,45 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="hero-footer">
-            <div class="hero-actions">
-              <button class="button" type="button" data-open-demo>
-                See a 2-Minute Demo
-              </button>
-              <a class="hero-link" href="#pilot-section-form"
-                >Start a free pilot</a
-              >
-            </div>
-            <div class="trust-strip">
-              <span>Surgeon-built</span>
-              <span>10,000+ cases</span>
-              <span>Live medspa pilots</span>
-            </div>
+      <!-- ═══ LOGO CLOUD ════════════════════════════════════ -->
+      <section class="section logo-cloud-section">
+        <div class="inner">
+          <p class="eyebrow">Featured, presented, integrated</p>
+          <h2>Built for aesthetics.</h2>
+          <div
+            class="logo-cloud"
+            aria-label="Recognition, event, and integration logos"
+          >
+            <a class="logo-item reveal" href="https://medtechinnovator.org/" target="_blank" rel="noopener">
+              <img src="assets/logos/medtech-innovator.jpg" alt="MedTech Innovator" />
+            </a>
+            <a class="logo-item reveal reveal-delay-1" href="https://register.octaneoc.org/atf2026" target="_blank" rel="noopener">
+              <img src="assets/logos/aesthetics-tech-forum.png" alt="Aesthetics Tech Forum" />
+            </a>
+            <a class="logo-item reveal reveal-delay-1" href="https://coremasterysummit.com/" target="_blank" rel="noopener">
+              <img src="assets/logos/core-mastery-summit.png" alt="Core Mastery Summit" />
+            </a>
+            <a class="logo-item reveal reveal-delay-2" href="https://www.medicalspashow.com/" target="_blank" rel="noopener">
+              <img src="assets/logos/amspa-show.png" alt="AmSpa Medical Spa Show" />
+            </a>
+            <a class="logo-item reveal reveal-delay-2" href="https://www.ponce.ai/post/ponce-ai-patientnow-for-medspas-automates-engagement-and-elevates-the-aesthetic-experience" target="_blank" rel="noopener">
+              <img src="assets/logos/patient-now.svg" alt="PatientNow" />
+            </a>
+            <a class="logo-item reveal reveal-delay-3" href="https://www.ponce.ai/post/ponce-ai-boulevard-medspa-software-transforming-medspa-bookings-into-40-more-treatment-revenue" target="_blank" rel="noopener">
+              <img src="assets/logos/boulevard.png" alt="Boulevard" />
+            </a>
+            <a class="logo-item reveal reveal-delay-3" href="https://www.4d-emr.com/" target="_blank" rel="noopener">
+              <img src="assets/logos/4d-emr.png" alt="4D EMR" />
+            </a>
           </div>
         </div>
       </section>
 
       <!-- ═══ WHY IT MATTERS ══════════════════════════════ -->
-      <section class="why-plan">
+      <section class="why-plan" data-theme="dark">
         <div class="inner why-plan-grid">
           <div>
             <p class="eyebrow">Why the plan matters</p>
@@ -3856,6 +4000,19 @@
               Patients who use Ponce spend up to 2x more over their treatment
               journey.
             </p>
+            <div class="why-compare" aria-hidden="true">
+              <div class="why-compare-row">
+                <span class="why-compare-label">Without plan</span>
+                <div class="why-compare-track"><div class="why-compare-fill" style="width:48%"></div></div>
+                <span class="why-compare-val">$1,200</span>
+              </div>
+              <div class="why-compare-row">
+                <span class="why-compare-label">With Ponce</span>
+                <div class="why-compare-track accent"><div class="why-compare-fill" style="width:96%"></div></div>
+                <span class="why-compare-val accent">$2,400</span>
+              </div>
+              <p class="why-compare-caption">Avg. patient spend · illustrative</p>
+            </div>
             <p class="lead">
               Ponce turns interest into an easy to understand plan patients can
               keep on their phone.
@@ -3863,17 +4020,24 @@
           </div>
           <div class="confidence-stack">
             <div class="confidence-card">
+              <div class="conf-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              </div>
               <strong>Recommendations unique to each face</strong>
               <p>Grounded in their photos, goals, and your clinical read.</p>
             </div>
             <div class="confidence-card">
+              <div class="conf-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              </div>
               <strong>Reinforces treatment value</strong>
               <p>Videos, before/afters, and simple explanations.</p>
             </div>
             <div class="confidence-card">
-              <strong
-                >Offload repetitive treatment and product explanations</strong
-              >
+              <div class="conf-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 15.5"/></svg>
+              </div>
+              <strong>Offload repetitive treatment and product explanations</strong>
               <p>Less repetition. More clinical judgment.</p>
             </div>
           </div>
@@ -4020,7 +4184,7 @@
       </section>
 
       <!-- ═══ PROOF / RESULTS ══════════════════════════════ -->
-      <section class="section">
+      <section class="section proof-section">
         <div class="inner">
           <p class="eyebrow">The proof</p>
           <h2>Real results from a real medspa</h2>
@@ -4066,7 +4230,7 @@
       </section>
 
       <!-- ═══ THE OFFER ════════════════════════════════════ -->
-      <section class="section offer" id="offer">
+      <section class="section offer" id="offer" data-theme="dark">
         <div class="inner offer-card">
           <div>
             <p class="eyebrow">The offer</p>
@@ -4182,52 +4346,6 @@
         </div>
       </section>
 
-      <!-- ═══ LOGO CLOUD ════════════════════════════════════ -->
-      <section class="section logo-cloud-section">
-        <div class="inner">
-          <p class="eyebrow">Featured, presented, integrated</p>
-          <h2>Built for aesthetics.</h2>
-          <div
-            class="logo-cloud"
-            aria-label="Recognition, event, and integration logos"
-          >
-            <div class="logo-item reveal">
-              <img
-                src="assets/logos/medtech-innovator.jpg"
-                alt="MedTech Innovator"
-              />
-            </div>
-            <div class="logo-item reveal reveal-delay-1">
-              <img
-                src="assets/logos/aesthetics-tech-forum.png"
-                alt="Aesthetics Tech Forum"
-              />
-            </div>
-            <div class="logo-item reveal reveal-delay-1">
-              <img
-                src="assets/logos/core-mastery-summit.png"
-                alt="Core Mastery Summit"
-              />
-            </div>
-            <div class="logo-item reveal reveal-delay-2">
-              <img
-                src="assets/logos/amspa-show.png"
-                alt="AmSpa Medical Spa Show"
-              />
-            </div>
-            <div class="logo-item reveal reveal-delay-2">
-              <img src="assets/logos/patient-now.svg" alt="PatientNow" />
-            </div>
-            <div class="logo-item reveal reveal-delay-3">
-              <img src="assets/logos/boulevard.png" alt="Boulevard" />
-            </div>
-            <div class="logo-item reveal reveal-delay-3">
-              <img src="assets/logos/4d-emr.png" alt="4D EMR" />
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- ═══ FAQ ═══════════════════════════════════════════ -->
       <section class="section">
         <div class="inner">
@@ -4269,7 +4387,7 @@
       </section>
 
       <!-- ═══ FINAL CTA ═════════════════════════════════════ -->
-      <section class="section final-cta" id="pilot">
+      <section class="section final-cta" id="pilot" data-theme="dark">
         <div class="inner">
           <div class="final-card">
             <div class="final-copy">
@@ -4297,7 +4415,7 @@
                   />
                 </label>
                 <label>
-                  Practice
+                  Practice Name
                   <input
                     name="practice"
                     autocomplete="organization"
@@ -4311,10 +4429,7 @@
                     placeholder="Example: 40 consults / month"
                   />
                 </label>
-                <p class="form-note">
-                  Prototype form only. Connect to your CRM or calendar when
-                  ready.
-                </p>
+                <p class="form-note">No credit card. No commitment.</p>
                 <button class="button" type="submit">
                   Request Pilot Setup
                 </button>
@@ -4332,9 +4447,7 @@
       </footer>
     </div>
 
-    <a class="sticky-mobile" href="#pilot-section-form"
-      >Try it free → Book a Demo</a
-    >
+    <a class="sticky-mobile" href="#pilot-section-form">Start Free Pilot</a>
 
     <!-- ═══ DEMO MODAL ════════════════════════════════════ -->
     <div class="modal" id="demo-modal" aria-hidden="true">
@@ -4423,10 +4536,7 @@
               placeholder="Injectables, skin, body contouring, or your full menu"
             ></textarea>
           </label>
-          <p class="form-note">
-            Prototype form only. Hook this up to your CRM or booking calendar
-            when ready.
-          </p>
+          <p class="form-note">No credit card. No commitment.</p>
           <button class="button full" type="submit">Request Pilot Setup</button>
         </form>
       </div>
@@ -4472,11 +4582,45 @@
           setModalOpen(pilotModal, false);
         }
       });
+      /* ── Website lead form submission ────────────────────── */
+      const API_BASE = "https://ponce-patient-backend.vercel.app";
       document.querySelectorAll(".pilot-form").forEach((form) => {
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
           e.preventDefault();
-          e.currentTarget.querySelector(".form-note").textContent =
-            "Pilot request captured. Connect this form to your CRM or booking calendar when ready.";
+          const f = e.currentTarget;
+          const note = f.querySelector(".form-note");
+          const btn = f.querySelector("button[type=submit]");
+          const data = {
+            name: f.querySelector("[name=name]")?.value?.trim() ?? "",
+            email: f.querySelector("[name=email]")?.value?.trim() ?? "",
+            practice: f.querySelector("[name=practice]")?.value?.trim() ?? "",
+            patientVolume: f.querySelector("[name=volume]")?.value?.trim() ?? "",
+          };
+          if (!data.name || !data.email) {
+            note.textContent = "Please enter your name and email.";
+            return;
+          }
+          btn.disabled = true;
+          note.textContent = "Submitting…";
+          try {
+            const res = await fetch(`${API_BASE}/api/website-leads`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+            if (res.ok) {
+              f.reset();
+              note.textContent = "You're on the list! We'll be in touch shortly.";
+              btn.textContent = "Request Sent ✓";
+            } else {
+              const err = await res.json().catch(() => ({}));
+              note.textContent = err.error ?? "Something went wrong. Please try again.";
+              btn.disabled = false;
+            }
+          } catch {
+            note.textContent = "Network error — please check your connection and try again.";
+            btn.disabled = false;
+          }
         });
       });
 
@@ -4525,6 +4669,13 @@
           window.scrollY < pilotTop - window.innerHeight * 0.65;
         document.body.classList.toggle("show-sticky", show);
         document.body.classList.toggle("has-scrolled", window.scrollY > 40);
+
+        // Check what section is visually behind the top-right button
+        const btnX = window.innerWidth - 60;
+        const btnY = 44;
+        const overDark = (document.elementsFromPoint?.(btnX, btnY) ?? [])
+          .some((el) => el.closest?.("[data-theme='dark']"));
+        document.body.classList.toggle("nav-over-dark", overDark);
       };
       updateStickyCta();
       window.addEventListener("scroll", updateStickyCta, { passive: true });
