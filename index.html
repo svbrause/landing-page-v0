@@ -11,6 +11,37 @@
       content="Ponce AI modernizes aesthetic consultations with AI-powered assessment, shared treatment plans, and patient education that helps more patients book from home."
     />
 
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "976061274538584");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=976061274538584&ev=PageView&noscript=1"
+        alt=""
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -223,40 +254,61 @@
           height 220ms ease,
           transform 220ms ease,
           padding 220ms ease,
-          gap 220ms ease;
+          gap 220ms ease,
+          border-radius 220ms ease,
+          background 220ms ease,
+          border-color 220ms ease;
       }
-      .brand-icon {
-        width: 36px;
+      .brand-logo {
+        flex-shrink: 0;
+        width: 44px;
         height: 36px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background:
-          radial-gradient(
-            circle at 50% 50%,
-            rgba(255, 250, 245, 0.22),
-            transparent 54%
-          ),
-          linear-gradient(145deg, #fffaf5, #e9d4ca);
-        color: var(--espresso);
-        font-family: var(--font-display);
-        font-size: 1.35rem;
-        line-height: 1;
-        font-weight: 700;
+        overflow: hidden;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+      }
+      .brand-logo img {
+        height: 100%;
+        width: auto;
+        max-width: none;
+        display: block;
       }
       .brand-word {
         line-height: 1;
       }
       body.has-scrolled .brand-mark {
-        width: 48px;
-        height: 48px;
+        width: 60px;
+        height: 60px;
         gap: 0;
+        align-items: center;
         justify-content: center;
-        padding: 6px;
-        background: rgba(31, 23, 20, 0.78);
+        padding: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #000000;
+        border-color: rgba(255, 250, 245, 0.14);
+        backdrop-filter: none;
       }
       body.has-scrolled .brand-word {
         display: none;
+      }
+      body.has-scrolled .brand-logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      body.has-scrolled .brand-logo img {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 50%;
       }
       .top-cta {
         position: fixed;
@@ -3910,7 +3962,9 @@
   </head>
   <body>
     <div class="brand-mark" aria-label="Ponce AI">
-      <span class="brand-icon" aria-hidden="true">P</span>
+      <span class="brand-logo" aria-hidden="true">
+        <img src="ponceai-logo.png" alt="" width="320" height="72" decoding="async" />
+      </span>
       <span class="brand-word">Ponce</span>
     </div>
     <a class="top-cta" href="#pilot-section-form">Start Free Pilot</a>
