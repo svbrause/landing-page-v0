@@ -4541,6 +4541,17 @@
                   />
                 </label>
                 <label>
+                  Cell phone
+                  <input
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    placeholder="555-123-4567"
+                    required
+                  />
+                </label>
+                <label>
                   Practice Name
                   <input
                     name="practice"
@@ -4646,6 +4657,15 @@
               placeholder="you@practice.com"
           /></label>
           <label
+            >Cell phone<input
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="555-123-4567"
+              required
+          /></label>
+          <label
             >Practice<input
               name="practice"
               autocomplete="organization"
@@ -4719,11 +4739,13 @@
           const data = {
             name: f.querySelector("[name=name]")?.value?.trim() ?? "",
             email: f.querySelector("[name=email]")?.value?.trim() ?? "",
+            phone: f.querySelector("[name=phone]")?.value?.trim() ?? "",
             practice: f.querySelector("[name=practice]")?.value?.trim() ?? "",
             patientVolume: f.querySelector("[name=volume]")?.value?.trim() ?? "",
           };
-          if (!data.name || !data.email) {
-            note.textContent = "Please enter your name and email.";
+          if (!data.name || !data.email || !data.phone) {
+            note.textContent =
+              "Please enter your name, work email, and cell phone number.";
             return;
           }
           btn.disabled = true;
