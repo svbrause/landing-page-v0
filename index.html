@@ -510,6 +510,155 @@
         margin-top: -10px;
       }
 
+      .hero-audience {
+        display: block;
+        margin: 0 auto 14px;
+        max-width: 720px;
+        font-size: 0.92rem;
+        font-weight: 650;
+        color: rgba(255, 250, 245, 0.62);
+        letter-spacing: 0.01em;
+      }
+
+      .hero-carousel-viewport {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        min-height: 500px;
+        margin: 0 auto;
+      }
+      .hero-slide-caption-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        margin: 18px auto 0;
+        min-height: 3.1em;
+      }
+      .hero-slide-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: 0;
+        padding: 0 12px;
+        text-align: center;
+        font-size: 0.92rem;
+        font-weight: 650;
+        line-height: 1.45;
+        color: rgba(255, 250, 245, 0.78);
+        opacity: 0;
+        transition: opacity 550ms ease;
+        pointer-events: none;
+      }
+      .hero-slide-caption.active {
+        opacity: 1;
+      }
+      .tablet-shell {
+        width: min(340px, 90vw);
+        background: #141009;
+        border-radius: 22px;
+        padding: 11px;
+        box-shadow:
+          0 0 0 1px rgba(255, 250, 245, 0.1),
+          0 50px 120px rgba(0, 0, 0, 0.5),
+          inset 0 0 0 1px rgba(255, 250, 245, 0.05);
+        animation: floatCard 7s ease-in-out infinite;
+      }
+      .tablet-screen-inner {
+        background: #fafaf8;
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+        min-height: 440px;
+        display: flex;
+        flex-direction: column;
+      }
+      .hs-provider-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: #1a1412;
+        color: rgba(255, 250, 245, 0.88);
+        font-size: 0.68rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .hs-provider-body {
+        flex: 1;
+        padding: 12px 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .hs-approve-bar {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: #1a1412;
+        color: #fffaf5;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .hs-approve-bar span {
+        font-size: 0.62rem;
+        font-weight: 650;
+        color: rgba(255, 250, 245, 0.55);
+      }
+      .proof-bar-strip {
+        padding: 22px 24px;
+        background: var(--cream);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .proof-bar-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px 22px;
+        text-align: center;
+        font-size: clamp(0.86rem, 1.15vw, 0.98rem);
+        color: rgba(36, 28, 24, 0.85);
+      }
+      .proof-bar-inner strong {
+        font-family: var(--font-display);
+        font-size: clamp(1.12rem, 1.65vw, 1.32rem);
+        font-weight: 600;
+        font-style: italic;
+        color: var(--espresso);
+      }
+      .proof-bar-sep {
+        color: rgba(36, 28, 24, 0.2);
+        font-weight: 300;
+        user-select: none;
+      }
+      .pilot-early-wrap {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .pilot-early-wrap .eyebrow {
+        text-align: center;
+        margin-bottom: 18px;
+        color: rgba(255, 250, 245, 0.58);
+      }
+      .pilot-early-wrap .pilot-form {
+        border: 1px solid rgba(255, 250, 245, 0.18);
+        border-radius: var(--r);
+        background: rgba(255, 250, 245, 0.94);
+      }
+      #pilot-form-primary {
+        scroll-margin-top: 100px;
+      }
+      .section.pilot-early {
+        padding-top: clamp(56px, 7vw, 96px);
+        padding-bottom: clamp(56px, 7vw, 96px);
+      }
+
       /* ─── HERO PHONE MOCKUP ───────────────────────────── */
       .hero-visual {
         position: relative;
@@ -555,6 +704,9 @@
         transition: opacity 700ms ease;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 0 0;
       }
       .hero-slide.active {
         opacity: 1;
@@ -4038,13 +4190,14 @@
       </span>
       <span class="brand-word">Ponce</span>
     </div>
-    <a class="top-cta" href="#pilot-section-form">Start Free Pilot</a>
+    <a class="top-cta" href="#pilot-form-primary">Start Free Pilot</a>
 
     <div class="page">
       <!-- ═══ HERO ═══════════════════════════════════════ -->
       <section class="hero" id="top" data-theme="dark">
         <div class="inner hero-grid">
           <div class="hero-copy">
+            <span class="hero-audience">For medspa owners and aesthetic providers</span>
             <h1>Patients with a plan spend 2× more.</h1>
             <p class="lead">
               Ponce AI helps your team build personalized treatment plans
@@ -4052,7 +4205,7 @@
               and spend more over time.
             </p>
             <div class="hero-actions">
-              <a class="button" href="#pilot-section-form">Start Free Pilot</a>
+              <a class="button" href="#pilot-form-primary">Start Free Pilot</a>
             </div>
           </div>
 
@@ -4062,111 +4215,212 @@
             <span>Live medspa pilots</span>
           </div>
 
-          <div class="hero-visual" aria-label="Animated product story">
-            <div class="hero-cinematic" id="hero-cinematic">
-              <div class="hc-frame">
-                <video
-                  class="hc-video"
-                  src="assets/hero-concepts/ponce-ai-ultra-minimal-iphone-face-mesh-v5-pingpong.mp4"
-                  poster="assets/hero-concepts/ponce-ai-ultra-minimal-iphone-face-mesh-v5-poster.jpg"
-                  autoplay
-                  muted
-                  loop
-                  playsinline
-                  preload="metadata"
-                  aria-label="Animated iPhone facial mesh scan"
-                ></video>
+          <div class="hero-visual" aria-label="Product demonstration">
+            <div class="hero-carousel-viewport">
+              <div class="hero-slide active">
+                <div class="phone-shell" aria-hidden="true">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen-inner">
+                    <div class="hs-statusbar">
+                      <span>9:41</span><span>5G ○</span>
+                    </div>
+                    <div class="hs-appbar">
+                      <span class="hs-back">‹</span><span class="hs-title">Facial quiz</span>
+                    </div>
+                    <div class="hs-content">
+                      <span class="hs-label">Question 2 of 5</span>
+                      <div
+                        style="
+                          height: 5px;
+                          background: rgba(89, 58, 48, 0.14);
+                          border-radius: 99px;
+                          overflow: hidden;
+                        "
+                      >
+                        <div
+                          style="
+                            width: 40%;
+                            height: 100%;
+                            background: var(--rose);
+                            border-radius: 99px;
+                          "
+                        ></div>
+                      </div>
+                      <p
+                        style="
+                          margin: 6px 0 4px;
+                          font-size: 0.78rem;
+                          font-weight: 800;
+                          color: var(--ink);
+                        "
+                      >
+                        What bothers you most right now?
+                      </p>
+                      <div class="hs-chips" style="flex-direction: column; align-items: stretch">
+                        <span class="hs-chip" style="text-align: center">Forehead lines</span>
+                        <span class="hs-chip empty" style="text-align: center">Under-eye hollows</span>
+                        <span class="hs-chip empty" style="text-align: center">Jaw contour</span>
+                      </div>
+                      <span class="hs-status" style="margin-top: auto">
+                        <span class="hs-check">✓</span> Photos uploaded
+                      </span>
+                    </div>
+                    <span class="phone-home-bar"></span>
+                  </div>
+                </div>
               </div>
+              <div class="hero-slide">
+                <div class="tablet-shell" aria-hidden="true">
+                  <div class="tablet-screen-inner">
+                    <div class="hs-provider-top">
+                      <span>← Review</span>
+                      <span>Sarah M.</span>
+                      <span style="opacity: 0.5">···</span>
+                    </div>
+                    <div class="hs-provider-body">
+                      <span class="hs-label">AI-organized · draft</span>
+                      <div class="hs-rx-list">
+                        <div class="hs-rx-item">
+                          <div class="hs-rx-left">
+                            <span class="hs-rx-name">Botox</span>
+                            <span class="hs-rx-area">Forehead · glabella</span>
+                          </div>
+                          <span class="hs-rx-badge today">Today</span>
+                        </div>
+                        <div class="hs-rx-item">
+                          <div class="hs-rx-left">
+                            <span class="hs-rx-name">Sculptra</span>
+                            <span class="hs-rx-area">Cheek volume</span>
+                          </div>
+                          <span class="hs-rx-badge sched">Schedule</span>
+                        </div>
+                        <div class="hs-rx-item">
+                          <div class="hs-rx-left">
+                            <span class="hs-rx-name">Skincare protocol</span>
+                            <span class="hs-rx-area">Home care</span>
+                          </div>
+                          <span class="hs-rx-badge sched">Add</span>
+                        </div>
+                      </div>
+                      <div class="hs-approve-bar">
+                        <span>Ready in ~30 sec</span>
+                        Approve &amp; send →
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-slide">
+                <div class="phone-shell" aria-hidden="true">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen-inner">
+                    <div class="hs-statusbar">
+                      <span>9:41</span><span>5G ○</span>
+                    </div>
+                    <div class="hs-appbar">
+                      <span class="hs-back">‹</span><span class="hs-title">Your plan</span>
+                    </div>
+                    <div class="hs-content">
+                      <div class="hs-pv-header">
+                        <span class="hs-pv-name">Your treatment plan</span>
+                        <span class="hs-pv-count">3 items</span>
+                      </div>
+                      <div class="hs-pv-face-row">
+                        <div class="hs-pv-mini-face">
+                          <span class="hs-pv-dot" style="left: 62%; top: 38%"></span>
+                        </div>
+                        <div class="hs-pv-zones">
+                          <div class="hs-pv-zone">Forehead · priority</div>
+                          <div class="hs-pv-zone">Mid-face volume</div>
+                        </div>
+                      </div>
+                      <div class="hs-pv-card">
+                        <div class="hs-pv-card-name">Sculptra — cheek volume</div>
+                        <div class="hs-pv-card-sub">Watch overview · compare results</div>
+                        <div class="hs-pv-card-btns">
+                          <span class="hs-pv-card-btn">Learn</span>
+                          <span class="hs-pv-card-btn">Ask</span>
+                        </div>
+                      </div>
+                      <div class="hs-pv-book">
+                        <span class="hs-pv-book-txt">Book your next visit</span>
+                        <span class="hs-pv-book-cta">Book →</span>
+                      </div>
+                    </div>
+                    <span class="phone-home-bar"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="phone-dots" role="presentation">
+              <span class="hero-dot active" aria-hidden="true"></span>
+              <span class="hero-dot" aria-hidden="true"></span>
+              <span class="hero-dot" aria-hidden="true"></span>
+            </div>
+            <div class="hero-slide-caption-wrap">
+              <p class="hero-slide-caption active">
+                Patient takes a 2-min quiz on their phone
+              </p>
+              <p class="hero-slide-caption">You review and approve the plan in 30 seconds</p>
+              <p class="hero-slide-caption">
+                They go home with a plan — and book more
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ═══ LOGO CLOUD ════════════════════════════════════ -->
-      <section class="section logo-cloud-section">
-        <div class="inner">
-          <p class="eyebrow">Featured, presented, integrated</p>
-          <h2>Built for aesthetics.</h2>
-          <div
-            class="logo-cloud"
-            aria-label="Recognition, event, and integration logos"
-          >
-            <a class="logo-item reveal" href="https://medtechinnovator.org/" target="_blank" rel="noopener">
-              <img src="assets/logos/medtech-innovator.jpg" alt="MedTech Innovator" />
-            </a>
-            <a class="logo-item reveal reveal-delay-1" href="https://register.octaneoc.org/atf2026" target="_blank" rel="noopener">
-              <img src="assets/logos/aesthetics-tech-forum.png" alt="Aesthetics Tech Forum" />
-            </a>
-            <a class="logo-item reveal reveal-delay-1" href="https://coremasterysummit.com/" target="_blank" rel="noopener">
-              <img src="assets/logos/core-mastery-summit.png" alt="Core Mastery Summit" />
-            </a>
-            <a class="logo-item reveal reveal-delay-2" href="https://www.medicalspashow.com/" target="_blank" rel="noopener">
-              <img src="assets/logos/amspa-show.png" alt="AmSpa Medical Spa Show" />
-            </a>
-            <a class="logo-item reveal reveal-delay-2" href="https://www.ponce.ai/post/ponce-ai-patientnow-for-medspas-automates-engagement-and-elevates-the-aesthetic-experience" target="_blank" rel="noopener">
-              <img src="assets/logos/patient-now.svg" alt="PatientNow" />
-            </a>
-            <a class="logo-item reveal reveal-delay-3" href="https://www.ponce.ai/post/ponce-ai-boulevard-medspa-software-transforming-medspa-bookings-into-40-more-treatment-revenue" target="_blank" rel="noopener">
-              <img src="assets/logos/boulevard.png" alt="Boulevard" />
-            </a>
-            <a class="logo-item reveal reveal-delay-3" href="https://www.4d-emr.com/" target="_blank" rel="noopener">
-              <img src="assets/logos/4d-emr.png" alt="4D EMR" />
-            </a>
-          </div>
+      <!-- ═══ PROOF BAR ═══════════════════════════════════ -->
+      <section class="proof-bar-strip" aria-label="Pilot results summary">
+        <div class="inner proof-bar-inner">
+          <span><strong>$15,729</strong> in 45 days</span>
+          <span class="proof-bar-sep" aria-hidden="true">|</span>
+          <span><strong>~6</strong> treatments discovered per patient</span>
+          <span class="proof-bar-sep" aria-hidden="true">|</span>
+          <span><strong>4.5/5</strong> patient rating</span>
         </div>
       </section>
 
-      <!-- ═══ WHY IT MATTERS ══════════════════════════════ -->
-      <section class="why-plan" data-theme="dark">
-        <div class="inner why-plan-grid">
-          <div>
-            <p class="eyebrow">Why the plan matters</p>
-            <h2>Patients buy <i>more</i> when the next step feels clear.</h2>
-            <p class="why-plan-callout">
-              Patients who use Ponce spend up to 2x more over their treatment
-              journey.
-            </p>
-            <div class="why-compare" aria-hidden="true">
-              <div class="why-compare-row">
-                <span class="why-compare-label">Without plan</span>
-                <div class="why-compare-track"><div class="why-compare-fill" style="width:48%"></div></div>
-                <span class="why-compare-val">$1,200</span>
-              </div>
-              <div class="why-compare-row">
-                <span class="why-compare-label">With Ponce</span>
-                <div class="why-compare-track accent"><div class="why-compare-fill" style="width:96%"></div></div>
-                <span class="why-compare-val accent">$2,400</span>
-              </div>
-              <p class="why-compare-caption">Avg. patient spend · illustrative</p>
-            </div>
-            <p class="lead">
-              Ponce turns interest into an easy to understand plan patients can
-              keep on their phone.
-            </p>
-          </div>
-          <div class="confidence-stack">
-            <div class="confidence-card">
-              <div class="conf-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-              </div>
-              <strong>Recommendations unique to each face</strong>
-              <p>Grounded in their photos, goals, and your clinical read.</p>
-            </div>
-            <div class="confidence-card">
-              <div class="conf-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-              </div>
-              <strong>Reinforces treatment value</strong>
-              <p>Videos, before/afters, and simple explanations.</p>
-            </div>
-            <div class="confidence-card">
-              <div class="conf-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 15.5"/></svg>
-              </div>
-              <strong>Offload repetitive treatment and product explanations</strong>
-              <p>Less repetition. More clinical judgment.</p>
-            </div>
-          </div>
+      <!-- ═══ PILOT FORM (EARLY) ═══════════════════════════ -->
+      <section class="section final-cta pilot-early" data-theme="dark">
+        <div class="inner pilot-early-wrap">
+          <p class="eyebrow">Free pilot</p>
+          <form class="pilot-form" id="pilot-form-primary">
+            <label>
+              Name
+              <input name="name" autocomplete="name" placeholder="Your name" required />
+            </label>
+            <label>
+              Work email
+              <input
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@practice.com"
+                required
+              />
+            </label>
+            <label class="full">
+              Practice name
+              <input
+                name="practice"
+                autocomplete="organization"
+                placeholder="Your practice"
+                required
+              />
+            </label>
+            <label class="full">
+              # of providers
+              <input
+                name="providers"
+                inputmode="numeric"
+                placeholder="e.g. 4"
+                required
+              />
+            </label>
+            <p class="form-note full">No credit card. No commitment.</p>
+            <button class="button full" type="submit">Request Free Pilot</button>
+          </form>
         </div>
       </section>
 
@@ -4196,7 +4450,7 @@
                 ></video>
               </div>
               <div>
-                <span class="story-kicker">01 · Assess + Discover</span>
+                <span class="story-kicker">01 · Assess</span>
                 <h3>Find treatment opportunities.</h3>
                 <p>
                   Photos, interests, and quiz answers reveal what the patient is
@@ -4227,7 +4481,7 @@
                 </div>
               </div>
               <div>
-                <span class="story-kicker">02 · Plan + share</span>
+                <span class="story-kicker">02 · Plan</span>
                 <h3>Build the plan.</h3>
                 <p>
                   The provider reviews, edits, and sends a personalized plan to
@@ -4250,7 +4504,7 @@
                 </div>
               </div>
               <div>
-                <span class="story-kicker">03 · After the visit</span>
+                <span class="story-kicker">03 · Engage</span>
                 <h3>Engage + Convert</h3>
                 <p>
                   Patients learn on their own time, compare results, and book
@@ -4280,8 +4534,8 @@
             </div>
           </div>
           <div class="callout-box">
-            <p class="eyebrow">Team adoption</p>
-            <h2>Fits the consult you already run.</h2>
+            <p class="eyebrow">Consult flow</p>
+            <h2>Fits your workflow</h2>
             <div class="use-flow-list">
               <div class="use-flow-item">
                 <div class="use-flow-icon">1</div>
@@ -4304,85 +4558,6 @@
                   <p>Education and booking at home.</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══ PROOF / RESULTS ══════════════════════════════ -->
-      <section class="section proof-section">
-        <div class="inner">
-          <p class="eyebrow">The proof</p>
-          <h2>Real results from a real medspa</h2>
-          <p class="lead">A 45-day pilot with mobile AI plans.</p>
-          <div class="proof-block">
-            <div class="proof-stats-row">
-              <article class="metric proof-metric reveal">
-                <strong>$15,729</strong>
-                <p>new revenue</p>
-                <div class="metric-visual revenue-bar" aria-hidden="true"></div>
-              </article>
-              <article class="metric proof-metric reveal reveal-delay-1">
-                <strong>~6</strong>
-                <p>treatments discovered per patient</p>
-                <div class="metric-visual treatment-dots" aria-hidden="true">
-                  <span></span><span></span><span></span><span></span
-                  ><span></span><span></span>
-                </div>
-              </article>
-              <article class="metric proof-metric reveal reveal-delay-2">
-                <strong>4.5 / 5</strong>
-                <p>patient rating</p>
-                <div class="metric-visual stars" aria-hidden="true">★★★★½</div>
-              </article>
-            </div>
-            <figure class="proof-testimonial reveal reveal-delay-3">
-              <div class="proof-testimonial-photo">
-                <img
-                  src="assets/generated-landing/proof-patient-warm-01.png"
-                  alt="Illustrative medspa-style portrait generated to match the site's warm ivory, rose, and espresso palette; not a photo of a specific real patient."
-                  width="1024"
-                  height="1024"
-                  loading="lazy"
-                />
-              </div>
-              <blockquote class="quote">
-                "It was fun to learn how my injector can help me look the way I
-                want." — Pilot patient
-              </blockquote>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══ THE OFFER ════════════════════════════════════ -->
-      <section class="section offer" id="offer" data-theme="dark">
-        <div class="inner offer-card">
-          <div>
-            <p class="eyebrow">The offer</p>
-            <h2>Try the mobile AI consult with 5 patients.</h2>
-            <p class="lead">Real patients. Real plans. No cost.</p>
-            <a class="button" href="#pilot-section-form"
-              >Start Your Free Pilot</a
-            >
-          </div>
-          <div class="offer-visual reveal">
-            <img
-              class="offer-photo"
-              src="assets/ideogram-landing/pilot-proof.jpeg"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
-            <div
-              class="offer-visual-inner pilot-board"
-              aria-label="Free pilot details"
-            >
-              <div class="pilot-tile">
-                <strong>5</strong><span>patients</span>
-              </div>
-              <div class="pilot-tile"><strong>30</strong><span>days</span></div>
-              <div class="pilot-tile"><strong>$0</strong><span>cost</span></div>
             </div>
           </div>
         </div>
@@ -4522,13 +4697,14 @@
               <p class="lead">Five patients. Thirty days. No cost.</p>
             </div>
             <div class="final-mark">
-              <form class="pilot-form" id="pilot-section-form">
+              <form class="pilot-form" id="pilot-form-footer">
                 <label>
                   Name
                   <input
                     name="name"
                     autocomplete="name"
                     placeholder="Your name"
+                    required
                   />
                 </label>
                 <label>
@@ -4538,38 +4714,29 @@
                     type="email"
                     autocomplete="email"
                     placeholder="you@practice.com"
-                  />
-                </label>
-                <label>
-                  Cell phone
-                  <input
-                    name="phone"
-                    type="tel"
-                    autocomplete="tel"
-                    inputmode="tel"
-                    placeholder="555-123-4567"
                     required
                   />
                 </label>
                 <label>
-                  Practice Name
+                  Practice name
                   <input
                     name="practice"
                     autocomplete="organization"
-                    placeholder="Practice name"
+                    placeholder="Your practice"
+                    required
                   />
                 </label>
                 <label>
-                  Patient volume
+                  # of providers
                   <input
-                    name="volume"
-                    placeholder="Example: 40 consults / month"
+                    name="providers"
+                    inputmode="numeric"
+                    placeholder="e.g. 4"
+                    required
                   />
                 </label>
                 <p class="form-note">No credit card. No commitment.</p>
-                <button class="button" type="submit">
-                  Request Pilot Setup
-                </button>
+                <button class="button" type="submit">Request Free Pilot</button>
               </form>
             </div>
           </div>
@@ -4584,7 +4751,7 @@
       </footer>
     </div>
 
-    <a class="sticky-mobile" href="#pilot-section-form">Start Free Pilot</a>
+    <a class="sticky-mobile" href="#pilot-form-primary">Start Free Pilot</a>
 
     <!-- ═══ DEMO MODAL ════════════════════════════════════ -->
     <div class="modal" id="demo-modal" aria-hidden="true">
@@ -4647,7 +4814,11 @@
         </div>
         <form class="pilot-form" id="pilot-form">
           <label
-            >Name<input name="name" autocomplete="name" placeholder="Your name"
+            >Name<input
+              name="name"
+              autocomplete="name"
+              placeholder="Your name"
+              required
           /></label>
           <label
             >Work email<input
@@ -4655,26 +4826,21 @@
               type="email"
               autocomplete="email"
               placeholder="you@practice.com"
-          /></label>
-          <label
-            >Cell phone<input
-              name="phone"
-              type="tel"
-              autocomplete="tel"
-              inputmode="tel"
-              placeholder="555-123-4567"
               required
           /></label>
           <label
-            >Practice<input
+            >Practice name<input
               name="practice"
               autocomplete="organization"
-              placeholder="Practice name"
+              placeholder="Your practice"
+              required
           /></label>
           <label
-            >Patient volume<input
-              name="volume"
-              placeholder="Example: 40 consults / month"
+            ># of providers<input
+              name="providers"
+              inputmode="numeric"
+              placeholder="e.g. 4"
+              required
           /></label>
           <label class="full"
             >What would you like to test?<textarea
@@ -4683,7 +4849,7 @@
             ></textarea>
           </label>
           <p class="form-note">No credit card. No commitment.</p>
-          <button class="button full" type="submit">Request Pilot Setup</button>
+          <button class="button full" type="submit">Request Free Pilot</button>
         </form>
       </div>
     </div>
@@ -4736,16 +4902,18 @@
           const f = e.currentTarget;
           const note = f.querySelector(".form-note");
           const btn = f.querySelector("button[type=submit]");
+          const providers =
+            f.querySelector("[name=providers]")?.value?.trim() ?? "";
           const data = {
             name: f.querySelector("[name=name]")?.value?.trim() ?? "",
             email: f.querySelector("[name=email]")?.value?.trim() ?? "",
-            phone: f.querySelector("[name=phone]")?.value?.trim() ?? "",
+            phone: "",
             practice: f.querySelector("[name=practice]")?.value?.trim() ?? "",
-            patientVolume: f.querySelector("[name=volume]")?.value?.trim() ?? "",
+            patientVolume: providers,
           };
-          if (!data.name || !data.email || !data.phone) {
+          if (!data.name || !data.email || !data.practice || !providers) {
             note.textContent =
-              "Please enter your name, work email, and cell phone number.";
+              "Please enter your name, work email, practice name, and number of providers.";
             return;
           }
           btn.disabled = true;
@@ -4772,23 +4940,26 @@
         });
       });
 
-      /* ── Hero phone slide cycling (if present) ───────────── */
+      /* ── Hero product carousel ─────────────────────────── */
       const heroSlides = document.querySelectorAll(".hero-slide");
       const heroDots = document.querySelectorAll(".hero-dot");
+      const heroCaptions = document.querySelectorAll(".hero-slide-caption");
       let currentSlide = 0;
       if (heroSlides.length > 1) {
         window.setInterval(() => {
           heroSlides[currentSlide].classList.remove("active");
           heroDots[currentSlide]?.classList.remove("active");
+          heroCaptions[currentSlide]?.classList.remove("active");
           currentSlide = (currentSlide + 1) % heroSlides.length;
           heroSlides[currentSlide].classList.add("active");
           heroDots[currentSlide]?.classList.add("active");
+          heroCaptions[currentSlide]?.classList.add("active");
         }, 4200);
       }
 
       /* ── Scroll reveals ────────────────────────────────── */
       const revealTargets = document.querySelectorAll(
-        ".story-section, .metric, .contrast, .bio, .logo-item, .offer-visual, .use-flow-item, .adoption-panel, .proof-testimonial, .founders-pullquote",
+        ".story-section, .contrast, .bio, .use-flow-item, .adoption-panel, .founders-pullquote",
       );
       if ("IntersectionObserver" in window) {
         revealTargets.forEach((t) => t.classList.add("reveal"));
